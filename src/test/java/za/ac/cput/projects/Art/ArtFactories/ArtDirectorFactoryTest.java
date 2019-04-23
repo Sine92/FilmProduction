@@ -12,7 +12,7 @@ public class ArtDirectorFactoryTest {
     @Before
     public void setUp() throws Exception {
 
-        art = ArtDirectorFactory.createArtDirector("Will","0125856",230.00)
+        art = ArtDirectorFactory.createArtDirector("Will","0125856",230.00);
     }
 
     @Test
