@@ -7,14 +7,15 @@ import za.ac.cput.projects.Unit.UnitManager;
 import static org.junit.Assert.*;
 
 public class UnitManagerFactoryTest {
-     UnitManager unitManager;
+    UnitManager unitManager;
+
     @Before
     public void setUp() throws Exception {
-        unitManager = UnitManagerFactory.createUnitManager("Isaac","036",7500.00);
+        unitManager = UnitManagerFactory.createUnitManager("Isaac", "036", 7500.00);
     }
 
     @Test
     public void createUnitManager() {
-        assertEquals(unitManager.getUnMName(),unitManager.getUnMName());
+        assertEquals(unitManager.getUnMName(), unitManager.getUnMName());
     }
 }

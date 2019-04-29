@@ -8,16 +8,17 @@ import static org.junit.Assert.*;
 
 public class MedicFactoryTest {
     Medic medic;
+
     @Before
     public void setUp() throws Exception {
-        medic = MedicFactory.createMedic("Darren","043",750.00);
+        medic = MedicFactory.createMedic("Darren", "043", 750.00);
     }
 
 
     @Test
     public void createMedic() {
 
-        assertEquals(medic.getMedName(),medic.getMedName());
+        assertEquals(medic.getMedName(), medic.getMedName());
 
 
     }

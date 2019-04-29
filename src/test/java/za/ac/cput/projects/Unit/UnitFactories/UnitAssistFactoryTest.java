@@ -8,16 +8,17 @@ import static org.junit.Assert.*;
 
 public class UnitAssistFactoryTest {
     UnitAssist unitAssist;
+
     @Before
     public void setUp() throws Exception {
 
-        unitAssist = UnitAssistFactory.createUnit("Nko","072",263.25);
+        unitAssist = UnitAssistFactory.createUnit("Nko", "072", 263.25);
     }
 
     @Test
     public void createUnit() {
 
-        assertEquals("Nko",unitAssist.getUnName());
+        assertEquals("Nko", unitAssist.getUnName());
     }
 
 

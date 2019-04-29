@@ -1,7 +1,7 @@
 package za.ac.cput.projects.Art;
 
 public class ArtDirector {
-    private String artDirectorName;
+    private String artDirectorName ;
     private String artDirectorNumber;
     private double artDirectorRate;
 

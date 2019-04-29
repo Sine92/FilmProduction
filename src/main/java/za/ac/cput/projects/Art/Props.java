@@ -6,7 +6,7 @@ public class Props {
     private String propsNumber;
     private double propsRate;
 
-    public Props()
+    private Props()
     {
 
     }
