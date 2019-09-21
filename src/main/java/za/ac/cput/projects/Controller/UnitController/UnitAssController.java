@@ -13,7 +13,7 @@ import java.util.Set;
 public class UnitAssController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("UnitAssServiceImpl")
     private UnitAssService unitAssService;
 
     @PostMapping("/create")

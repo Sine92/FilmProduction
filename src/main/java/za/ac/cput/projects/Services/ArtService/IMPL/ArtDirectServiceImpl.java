@@ -2,6 +2,8 @@ package za.ac.cput.projects.Services.ArtService.IMPL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import za.ac.cput.projects.Domain.Art.ArtDirector;
 import za.ac.cput.projects.Repositories.ArtRepository.ArtDirectorRepository;
@@ -9,13 +11,16 @@ import za.ac.cput.projects.Repositories.ArtRepository.ArtImplRepository.ArtRepoI
 import za.ac.cput.projects.Services.ArtService.ArtDirectService;
 
 import java.util.Set;
+@Service("ArtDirectServiceImpl")
 
-@Service("ServiceImpl")
 public class ArtDirectServiceImpl implements ArtDirectService {
 
+
+
     @Autowired
-    @Qualifier("InMemory")
-    private static ArtDirectServiceImpl service = null;
+    private ArtDirectServiceImpl service = null;
+    //@Qualifier("InMemory")
+
     private ArtRepoImpl artRepo;
 
     private ArtDirectServiceImpl()
@@ -23,7 +28,7 @@ public class ArtDirectServiceImpl implements ArtDirectService {
         this.artRepo = ArtRepoImpl.getArtRepo();
     }
 
-    public static ArtDirectServiceImpl getService()
+    public  ArtDirectServiceImpl getService()
     {
         if(service == null)service = new ArtDirectServiceImpl();
         return service;

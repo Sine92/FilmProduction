@@ -13,7 +13,7 @@ import java.util.Set;
 public class ProdManController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("ProdManagerServiceImpl")
     private ProdManagerService prodManagerService;
 
 

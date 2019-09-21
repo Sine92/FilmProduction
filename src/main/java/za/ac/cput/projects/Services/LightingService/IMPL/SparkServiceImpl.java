@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.LightingRepository.LightingImpRepository
 import za.ac.cput.projects.Services.LightingService.SparkService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("SparkServiceImpl")
 public class SparkServiceImpl implements SparkService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("SparkServiceImpl")
+    private SparkServiceImpl service = null;
     private SparkImp sparkImp;
     @Override
     public Set<Spark> getAll() {

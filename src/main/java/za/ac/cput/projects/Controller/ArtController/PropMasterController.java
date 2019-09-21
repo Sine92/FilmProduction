@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/propMaster")
 public class PropMasterController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("PropMasterServiceImpl")
     private PropMasterService propMasterService;
 
     @PostMapping("/create")

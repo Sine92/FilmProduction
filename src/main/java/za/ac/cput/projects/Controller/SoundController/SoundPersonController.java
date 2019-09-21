@@ -13,7 +13,7 @@ import java.util.Set;
 public class SoundPersonController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("SoundPersonServiceImpl")
     private SoundPersonService soundPersonService;
 
     @PostMapping("/create")

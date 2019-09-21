@@ -5,6 +5,7 @@ public class GeneratorOp {
     private String genName;
     private String genNumber;
     private double genRate;
+    private String genId;
 
     public GeneratorOp()
     {
@@ -15,8 +16,11 @@ public class GeneratorOp {
       this.genName = build.genName;
       this.genNumber = build.genNumber;
       this.genRate = build.genRate;
+      this.genId = build.genId;
     }
-
+    public String getGenId() {
+        return genId;
+    }
     public String getGenName() {
         return genName;
     }
@@ -32,6 +36,7 @@ public class GeneratorOp {
         private String genName;
         private String genNumber;
         private double genRate;
+        private String genId;
 
         public Builder genName(String value)
         {

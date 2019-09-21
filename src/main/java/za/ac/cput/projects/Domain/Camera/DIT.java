@@ -5,6 +5,13 @@ public class DIT {
     private String ditName;
     private String ditNumber;
     private double ditRate;
+    private String ditId;
+
+    public String getDitId() {
+        return ditId;
+    }
+
+
 
     public DIT()
     {
@@ -15,6 +22,7 @@ public class DIT {
         this.ditName = build.ditName;
         this.ditNumber = build.ditNumber;
         this.ditRate = build.ditRate;
+        this.ditId = build.ditId;
 
     }
 
@@ -34,7 +42,14 @@ public class DIT {
         private String ditName;
         private String ditNumber;
         private double ditRate;
+        private String ditId;
 
+
+        public Builder ditId(String value)
+        {
+            this.ditId = value;
+            return this;
+        }
         public Builder ditName(String value)
         {
             this.ditName = value;

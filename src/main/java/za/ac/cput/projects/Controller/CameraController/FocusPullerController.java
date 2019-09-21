@@ -13,7 +13,7 @@ import java.util.Set;
 public class FocusPullerController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("FocusPullerServiceImpl")
     private FocusPullerService focusPullerService;
 
     @PostMapping("/create")

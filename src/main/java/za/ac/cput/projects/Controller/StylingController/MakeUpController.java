@@ -13,7 +13,7 @@ import java.util.Set;
 public class MakeUpController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("MakeUpServiceImpl")
     private MakeUpService makeUpService;
 
     @PostMapping("/create")

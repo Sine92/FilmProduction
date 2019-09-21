@@ -16,9 +16,18 @@ public class ArtRepoImpl implements ArtDirectorRepository {
     {
      this.artDirectorSet = new HashSet<>();
     }
+
     public static ArtRepoImpl getArtRepo(){
         if (artRepo == null) artRepo = new ArtRepoImpl();
         return artRepo;
+    }
+
+    private ArtDirector findArtDirector(String artName)
+    {
+        return this.artDirectorSet.stream()
+                .filter(artDirector -> artDirector.getArtDirectorName().trim().equals(artName))
+                .findAny()
+                .orElse(null);
     }
     public ArtDirector create(ArtDirector artDirector)
     {
@@ -27,31 +36,29 @@ public class ArtRepoImpl implements ArtDirectorRepository {
     }
     public ArtDirector read(String artDName)
     {
-        if(artRepo.artDirectorSet.contains(artDName))
-        {
-            for(ArtDirector artId1 : artDirectorSet)
-            {
-               if( artId1.equals(artDName))
-                return artId1;
-            }
-        }
-        return null;
+
+     ArtDirector artDirector = findArtDirector(artDName);
+        return artDirector;
     }
 
     public ArtDirector update(ArtDirector artDirector)
     {
-        if(artDirectorSet.contains(artDirector))
-            for(ArtDirector artDirector1: artDirectorSet)
-            {
-                if(artDirector1.equals(artDirector))
-                    return artDirector;
-            }
-       return null;
+        ArtDirector toUpdate = findArtDirector(artDirector.getArtDirectorName());
+        if(toUpdate!=null) {
+            this.artDirectorSet.remove(toUpdate);
+            return create(artDirector);
+        }
+return  null;
     }
 
     @Override
     public void delete(String artDName) {
-      artDirectorSet.removeIf(t ->t.getArtDirectorName().equals(artDName));
+
+        ArtDirector toDelete = findArtDirector(artDName);
+        if(toDelete!=null){
+            this.artDirectorSet.remove(toDelete);
+        }
+
     }
 
 

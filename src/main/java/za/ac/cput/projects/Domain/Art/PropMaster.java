@@ -5,6 +5,11 @@ public class PropMaster {
     private String propMasterName;
     private String propMasterNumber;
     private double propMasterRate;
+    private String propMasterId;
+
+    public String getPropMasterId() {
+        return propMasterId;
+    }
 
     public PropMaster()
     {
@@ -15,6 +20,7 @@ public class PropMaster {
         this.propMasterName = build.propMasterName;
         this.propMasterNumber = build.propMasterNumber;
         this.propMasterRate = build.propMasterRate;
+        this.propMasterId = build.propMasterId;
 
     }
 
@@ -33,13 +39,14 @@ public class PropMaster {
         private String propMasterName;
         private String propMasterNumber;
         private double propMasterRate;
+        private String propMasterId;
 
         public Builder propMasterName(String value)
         {
             this.propMasterName = value;
             return  this;
         }
-        public Builder propMasterNu0mber(String value)
+        public Builder propMasterNumber(String value)
         {
             this.propMasterNumber = value;
             return this;
@@ -48,6 +55,11 @@ public class PropMaster {
         {
             this.propMasterRate = value;
             return  this;
+        }
+        public Builder propMasterId(String value)
+        {
+            this.propMasterId = value;
+            return this;
         }
         public PropMaster build()
         {

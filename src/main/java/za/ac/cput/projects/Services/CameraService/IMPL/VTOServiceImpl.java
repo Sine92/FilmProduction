@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.CameraRepository.CamAsRepoImpl.VTOImpl;
 import za.ac.cput.projects.Services.CameraService.VTOService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("VTOServiceImpl")
 public class VTOServiceImpl implements VTOService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("VTOServiceImpl")
+    private VTOServiceImpl service = null;
     private VTOImpl vtoImp;
     @Override
     public Set<VTO> getAll() {

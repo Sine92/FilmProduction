@@ -8,12 +8,13 @@ import za.ac.cput.projects.Repositories.ArtRepository.ArtImplRepository.PropsImp
 import za.ac.cput.projects.Services.ArtService.PropsService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("PropsServiceImpl")
 public class PropsServiceImpl implements PropsService {
 
     @Autowired
-    @Qualifier("InMemory")
-    private static PropsServiceImpl service = null;
+
+    private PropsServiceImpl service = null;
+    //@Qualifier("PropsServiceImpl")
     private PropsImpl propsRepo;
 
 

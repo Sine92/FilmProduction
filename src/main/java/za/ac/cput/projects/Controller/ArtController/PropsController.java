@@ -13,7 +13,7 @@ import java.util.Set;
 public class PropsController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("PropsServiceImpl")
     private PropsService propsService;
 
     @PostMapping("/create")

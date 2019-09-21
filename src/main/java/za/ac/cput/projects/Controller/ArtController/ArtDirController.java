@@ -2,6 +2,7 @@ package za.ac.cput.projects.Controller.ArtController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.projects.Domain.Art.ArtDirector;
 import za.ac.cput.projects.Services.ArtService.IMPL.ArtDirectServiceImpl;
@@ -10,10 +11,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/artDirector")
+
 public class ArtDirController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("ArtDirectServiceImpl")
     private ArtDirectServiceImpl artDirectService;
 
     @PostMapping("/create")

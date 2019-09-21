@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.UnitRepository.UnitImpRepository.MedicIm
 import za.ac.cput.projects.Services.UnitService.MedicService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("MedicServiceImpl")
 public class MedicServiceImpl implements MedicService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("MedicServiceImpl")
+    private MedicServiceImpl service = null;
     private MedicImp medicImp;
     @Override
     public Set<Medic> getAll() {

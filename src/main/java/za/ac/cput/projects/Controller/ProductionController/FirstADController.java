@@ -13,7 +13,7 @@ import java.util.Set;
 public class FirstADController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("FirstADServiceImpl")
     private FirstADService firstADService;
 
     @PostMapping("/create")

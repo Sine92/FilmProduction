@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.StylingRepository.StylingImpRepository.M
 import za.ac.cput.projects.Services.StylingService.MakeUpService;
 
 import java.util.Set;
- @Service("ServiceImpl")
+ @Service("MakeUpServiceImpl")
 public class MakeUpServiceImpl implements MakeUpService {
      @Autowired
-     @Qualifier("InMemory")
+     @Qualifier("MakeUpServiceImpl")
+     private MakeUpServiceImpl service = null;
      private MakeUpArtImpl makeUpArt;
     @Override
     public Set<MakeUpAssist> getAll() {

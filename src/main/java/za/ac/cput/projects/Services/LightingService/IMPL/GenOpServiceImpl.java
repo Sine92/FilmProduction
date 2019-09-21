@@ -9,10 +9,11 @@ import za.ac.cput.projects.Repositories.LightingRepository.LightingImpRepository
 import za.ac.cput.projects.Services.LightingService.GenOpService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("GenOpServiceImpl")
 public class GenOpServiceImpl implements GenOpService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("GenOpServiceImpl")
+    private GenOpServiceImpl service = null;
     private GenOpImp genOpImp;
     @Override
     public Set<GeneratorOp> getAll() {

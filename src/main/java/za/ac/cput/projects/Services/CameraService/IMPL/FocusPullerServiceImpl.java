@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.CameraRepository.CamAsRepoImpl.FocusPull
 import za.ac.cput.projects.Services.CameraService.FocusPullerService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("FocusPullerServiceImpl")
 public class FocusPullerServiceImpl implements FocusPullerService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("FocusPullerServiceImpl")
+    private FocusPullerServiceImpl service = null;
     private FocusPullerImp focusPullerImp;
     @Override
     public Set<FocusPuller> getAll() {

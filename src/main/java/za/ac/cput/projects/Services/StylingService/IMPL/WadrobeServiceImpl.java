@@ -10,11 +10,12 @@ import za.ac.cput.projects.Services.StylingService.MakeUpService;
 import za.ac.cput.projects.Services.StylingService.WadrobeService;
 
 import java.util.Set;
- @Service("ServiceImpl")
+ @Service("WadrobeServiceImpl")
 public class WadrobeServiceImpl implements WadrobeService {
 
      @Autowired
-     @Qualifier("InMemory")
+     @Qualifier("WadrobeServiceImpl")
+     private WadrobeServiceImpl service = null;
      private WadrobeImp wadrobeImp;
 
 

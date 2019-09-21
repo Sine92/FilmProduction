@@ -13,7 +13,7 @@ import java.util.Set;
 public class VTOController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("VTOServiceImpl")
     private VTOService vtoService;
 
     @PostMapping("/create")

@@ -1,6 +1,6 @@
 package za.ac.cput.projects.Repositories.CameraRepository;
 
-import za.ac.cput.projects.Repositories.ArtRepository.IRepository;
+import za.ac.cput.projects.Repositories.IRepository;
 import za.ac.cput.projects.Domain.Camera.DIT;
 
 import java.util.Set;

@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.GripsRepository.GripImpRepository.KeyGri
 import za.ac.cput.projects.Services.GripsService.KeyGripService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("KeyGripServiceImpl")
 public class KeyGripServiceImpl implements KeyGripService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("KeyGripServiceImpl")
+    private KeyGripServiceImpl service = null;
     private KeyGripImpl keyGripRepo;
     @Override
     public Set<KeyGrip> getAll() {

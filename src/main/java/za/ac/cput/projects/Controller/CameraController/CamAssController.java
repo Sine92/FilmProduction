@@ -14,7 +14,7 @@ import java.util.Set;
 public class CamAssController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("CamAssServiceImpl")
     private CamAssService camAssService;
 
 

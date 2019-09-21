@@ -9,10 +9,13 @@ import za.ac.cput.projects.Services.CameraService.CamAssService;
 import za.ac.cput.projects.Services.IService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("CamAssServiceImpl")
 public class CamAssServiceImpl implements CamAssService {
+
+
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("CamAssServiceImpl")
+    private  CamAssServiceImpl service = null;
     private CamAssistantImp camAssistantImp;
     @Override
     public Set<CamAssistant> getAll() {

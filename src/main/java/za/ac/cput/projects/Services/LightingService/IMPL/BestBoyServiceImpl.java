@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.LightingRepository.LightingImpRepository
 import za.ac.cput.projects.Services.LightingService.BestBoyService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("BestBoyServiceImpl")
 public class BestBoyServiceImpl implements BestBoyService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("BestBoyServiceImpl")
+    private BestBoyServiceImpl service = null;
     private BestBoyImp bestBoyImp;
     @Override
     public Set<BestBoy> getAll() {

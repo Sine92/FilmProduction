@@ -17,6 +17,10 @@ public class CamAssistantImp implements CamAsRepository {
         return camRepo;
 
     }
+    private CamAssistant findCamAssistant()
+    {
+
+    }
 
 
     public Set<CamAssistant> getAll()
@@ -34,39 +38,17 @@ public class CamAssistantImp implements CamAsRepository {
     @Override
     public void delete(String camNameId) {
 
-        camAssistantSet.removeIf(t->t.getCamAssistName().equals(camNameId));
+
 
     }
 
     @Override
     public CamAssistant update(CamAssistant camAssistant) {
-       if(camAssistantSet.contains(camAssistant))
-       {
-           for(CamAssistant camAssistant1: camAssistantSet)
-           {
-               if(camAssistant1.equals(camAssistant))
-               {
-                   return camAssistant1;
-               }
-           }
-       }
-       return null;
+
     }
 
     @Override
     public CamAssistant read(String camAssistant) {
 
-        if(camRepo.camAssistantSet.contains(camAssistant))
-        {
-            for(CamAssistant camAssistant1:camAssistantSet)
-            {
-                if(camAssistant1.equals(camAssistant))
-                {
-                    return camAssistant1;
-                }
-            }
-        }
-
-        return null;
     }
 }

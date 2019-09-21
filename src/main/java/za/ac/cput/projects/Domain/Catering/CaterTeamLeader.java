@@ -5,6 +5,7 @@ public class CaterTeamLeader {
     private String ctTName;
     private String ctTNumber;
     private double ctTRate;
+    private String ctTId;
 
     public CaterTeamLeader()
     {
@@ -16,6 +17,7 @@ public class CaterTeamLeader {
       this.ctTName = build.ctTName;
       this.ctTNumber = build.ctTNumber;
       this.ctTRate = build.ctTRate;
+      this.ctTId = build.ctTId;
     }
     public String getCtTName() {
         return ctTName;
@@ -29,11 +31,16 @@ public class CaterTeamLeader {
         return ctTRate;
     }
 
+    public String getCtTId() {
+        return ctTId;
+    }
+
     public static class Builder{
 
         private String ctTName;
         private String ctTNumber;
         private double ctTRate;
+        private String ctTId;
 
         public Builder ctTName(String value)
         {
@@ -48,6 +55,11 @@ public class CaterTeamLeader {
         public Builder ctTRate(double value)
         {
             this.ctTRate = value;
+            return this;
+        }
+        public Builder vtId(String value)
+        {
+            this.ctTId = value;
             return this;
         }
 

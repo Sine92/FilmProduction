@@ -1,4 +1,4 @@
-package za.ac.cput.projects.Repositories.ArtRepository;
+package za.ac.cput.projects.Repositories;
 
 public interface IRepository <T ,ID> {
 

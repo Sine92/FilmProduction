@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/bestBoy")
 public class BestBoyController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("BestBoyServiceImpl")
     private BestBoyService bestBoyService;
 
     @PostMapping("/create")

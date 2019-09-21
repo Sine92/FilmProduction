@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/dit")
 public class DITController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("DITServiceImpl")
     private DITService ditService;
 
     @PostMapping("/create")

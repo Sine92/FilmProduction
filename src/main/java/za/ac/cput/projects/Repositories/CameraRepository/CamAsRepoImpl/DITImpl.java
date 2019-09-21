@@ -1,6 +1,5 @@
 package za.ac.cput.projects.Repositories.CameraRepository.CamAsRepoImpl;
 
-import za.ac.cput.projects.Repositories.ArtRepository.IRepository;
 import za.ac.cput.projects.Domain.Camera.DIT;
 import za.ac.cput.projects.Repositories.CameraRepository.DITRepository;
 

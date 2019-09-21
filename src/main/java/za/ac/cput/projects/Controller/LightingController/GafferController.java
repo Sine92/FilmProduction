@@ -13,7 +13,7 @@ import java.util.Set;
 public class GafferController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("GafferServiceImpl")
     private GafferService gafferService;
 
     @PostMapping("/create")

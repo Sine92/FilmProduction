@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.CameraRepository.CamAsRepoImpl.DITImpl;
 import za.ac.cput.projects.Services.CameraService.DITService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("DITServiceImpl")
 public class DITServiceImpl implements DITService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("DITServiceImpl")
+    private DITServiceImpl service = null;
     private DITImpl ditImpl;
     @Override
     public Set<DIT> getAll() {

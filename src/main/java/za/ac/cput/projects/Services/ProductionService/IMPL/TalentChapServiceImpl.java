@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.ProductionRepository.ProductionImpRepo.T
 import za.ac.cput.projects.Services.ProductionService.TalentChapService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("TalentChapServiceImpl")
 public class TalentChapServiceImpl implements TalentChapService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("TalentChapServiceImpl")
+    private TalentChapServiceImpl service = null;
     private TalentChapImp talentChapImp;
     @Override
     public Set<TalentChaperone> getAll() {

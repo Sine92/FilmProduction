@@ -1,6 +1,6 @@
 package za.ac.cput.projects.Repositories.LightingRepository;
 
-import za.ac.cput.projects.Repositories.ArtRepository.IRepository;
+import za.ac.cput.projects.Repositories.IRepository;
 import za.ac.cput.projects.Domain.Lighting.Gaffer;
 
 import java.util.Set;

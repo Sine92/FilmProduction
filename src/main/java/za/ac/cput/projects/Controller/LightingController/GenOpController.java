@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/generatorOp")
 public class GenOpController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("GenOpServiceImpl")
     private GenOpService genOpService;
 
     @PostMapping("/create")

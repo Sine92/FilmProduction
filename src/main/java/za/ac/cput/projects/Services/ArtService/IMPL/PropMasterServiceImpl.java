@@ -9,12 +9,14 @@ import za.ac.cput.projects.Services.ArtService.PropMasterService;
 
 import java.util.Set;
 
-@Service("ServiceImpl")
+@Service("PropMasterServiceImpl")
 public class PropMasterServiceImpl implements PropMasterService {
 
 
     @Autowired
-    @Qualifier("InMemory")
+
+    //@Qualifier("PropMasterServiceImpl")
+    private  PropMasterServiceImpl service = null;
     private PropMasterImpl propMasterRepo;
 
     @Override

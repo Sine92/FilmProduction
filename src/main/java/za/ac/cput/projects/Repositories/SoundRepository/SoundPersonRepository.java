@@ -1,6 +1,6 @@
 package za.ac.cput.projects.Repositories.SoundRepository;
 
-import za.ac.cput.projects.Repositories.ArtRepository.IRepository;
+import za.ac.cput.projects.Repositories.IRepository;
 import za.ac.cput.projects.Domain.Sound.SoundPerson;
 
 import java.util.Set;

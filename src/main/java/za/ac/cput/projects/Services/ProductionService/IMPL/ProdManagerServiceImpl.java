@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.ProductionRepository.ProductionImpRepo.P
 import za.ac.cput.projects.Services.ProductionService.ProdManagerService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("ProdManagerServiceImpl")
 public class ProdManagerServiceImpl implements ProdManagerService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("ProdManagerServiceImpl")
+    private ProdManagerServiceImpl service = null;
     private ProdManagerImp prodManagerImp;
     @Override
     public Set<ProdManager> getAll() {

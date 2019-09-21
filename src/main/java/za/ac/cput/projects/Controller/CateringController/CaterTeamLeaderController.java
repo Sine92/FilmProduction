@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/caterTeamLeader")
 public class CaterTeamLeaderController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("CaterServiceImpl")
     private CaterTeamLerderService caterTeamLerderService;
 
     @PostMapping("/create")

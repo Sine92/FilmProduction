@@ -4,6 +4,11 @@ public class VTO {
     private String vTName;
     private String vTNumber;
     private double vTRate;
+    private String vtId;
+
+    public String getVtId() {
+        return vtId;
+    }
 
     public VTO ()
     {
@@ -14,6 +19,7 @@ public class VTO {
      this.vTName = build.vTName;
      this.vTNumber = build.vTNumber;
      this.vTRate = build.vTRate;
+     this.vtId = build.vtId;
     }
 
     public String getvTName() {
@@ -27,10 +33,12 @@ public class VTO {
     public double getvTRate() {
         return vTRate;
     }
+
     public static class Builder{
         private String vTName;
         private String vTNumber;
         private double vTRate;
+        private String vtId;
 
         public Builder vTName(String value)
         {
@@ -46,6 +54,11 @@ public class VTO {
         {
            this.vTRate = value;
            return this;
+        }
+        public Builder vtId(String value)
+        {
+            this.vtId = value;
+            return this;
         }
         public VTO build()
         {

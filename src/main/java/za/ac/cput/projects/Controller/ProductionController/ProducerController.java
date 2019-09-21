@@ -13,7 +13,7 @@ import java.util.Set;
 public class ProducerController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("ProducerServiceImpl")
     private ProducerService producerService;
 
     @PostMapping("/create")

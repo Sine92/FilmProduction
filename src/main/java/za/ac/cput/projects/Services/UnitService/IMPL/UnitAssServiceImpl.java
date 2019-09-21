@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.UnitRepository.UnitImpRepository.UnitAss
 import za.ac.cput.projects.Services.UnitService.UnitAssService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("UnitAssServiceImpl")
 public class UnitAssServiceImpl implements UnitAssService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("UnitAssServiceImpl")
+    private UnitAssServiceImpl service = null;
     private UnitAssImp unitAssImp;
 
     @Override

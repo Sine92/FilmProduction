@@ -14,7 +14,7 @@ import java.util.Set;
 public class UnitManController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("UnitManagerServiceImpl")
     private UnitManagerService unitManagerService;
 
     @PostMapping("/create")

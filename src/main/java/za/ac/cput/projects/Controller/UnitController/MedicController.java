@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/medic")
 public class MedicController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("MedicServiceImpl")
     private MedicService medicService;
 
     @PostMapping("/create")

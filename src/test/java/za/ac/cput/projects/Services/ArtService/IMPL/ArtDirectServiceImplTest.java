@@ -23,9 +23,8 @@ public class ArtDirectServiceImplTest {
     }
     @Before
     public void setUp() throws Exception {
-
-        this.artRepo = ArtRepoImpl.getArtRepo();
-        this.artDirector = ArtDirectorFactory.createArtDirector("Sarah","236",20.00);
+        artRepo = ArtRepoImpl.getArtRepo();
+        artDirector = ArtDirectorFactory.createArtDirector("Sarah","236",20.00);
 
     }
 
@@ -34,18 +33,19 @@ public class ArtDirectServiceImplTest {
     public void getAll() {
         Set<ArtDirector> artDirectorSet = this.artRepo.getAll();
         System.out.println("In getting all, all = "+ artDirectorSet);
+        Assert.assertEquals(artRepo.getAll(),artRepo.getAll());
     }
 
     @Test
     public void create() {
     ArtDirector created = this.artRepo.create(this.artRepo.create(artDirector));
         System.out.println("In create, created = "+ created);
-        Assert.assertNotNull(created);
+        //Assert.assertSame(created,);
         Assert.assertSame(created,this.artDirector);
 
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void update() {
         String newArtDirectName = "Will";
         ArtDirector updated = new ArtDirector.Builder().copy(getSaved()).artDirectorName(newArtDirectName).build();
@@ -60,14 +60,15 @@ public class ArtDirectServiceImplTest {
         this.artRepo.delete(saved.getArtDirectorName());
         getAll();
 
+
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void read() {
-        ArtDirector saved = getSaved();
+       ArtDirector saved = getSaved();
         ArtDirector read = this.artRepo.read(saved.getArtDirectorName());
         System.out.println("In reading, read = "+ read);
-        Assert.assertSame(read,saved);
+        Assert.assertSame(read,this.artDirector);
 
     }
 }

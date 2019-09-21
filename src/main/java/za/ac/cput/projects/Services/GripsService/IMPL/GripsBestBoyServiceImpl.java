@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.GripsRepository.GripImpRepository.GripsB
 import za.ac.cput.projects.Services.GripsService.GripBestBoyService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("GripsBestBoyServiceImpl")
 public class GripsBestBoyServiceImpl implements GripBestBoyService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("GripsBestBoyServiceImpl")
+    private GripsBestBoyServiceImpl service = null;
     private GripsBestBoyImp gripsBestBoyImp;
     @Override
     public Set<GripBestBoy> getAll() {

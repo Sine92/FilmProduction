@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/boomSwinger")
 public class BoomSwingerController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("BoomSwingerServiceImpl")
     private BoomSwingerService boomSwingerService;
 
     @PostMapping("/create")

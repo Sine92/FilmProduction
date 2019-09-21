@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.SoundRepository.SoundImpRepository.Sound
 import za.ac.cput.projects.Services.SoundService.SoundPersonService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("SoundPersonServiceImpl")
 public class SoundPersonServiceImpl implements SoundPersonService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("SoundPersonServiceImpl")
+    private SoundPersonServiceImpl service = null;
     private SoundPersonImp soundPersonImp;
     @Override
     public Set<SoundPerson> getAll() {

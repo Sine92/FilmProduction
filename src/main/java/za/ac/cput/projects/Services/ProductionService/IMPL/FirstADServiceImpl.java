@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.ProductionRepository.ProductionImpRepo.F
 import za.ac.cput.projects.Services.ProductionService.FirstADService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("FirstADServiceImpl")
 public class FirstADServiceImpl implements FirstADService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("FirstADServiceImpl")
+    private FirstADServiceImpl service = null;
     private FirstADImp firstADImp;
     @Override
     public Set<FirstAD> getAll() {

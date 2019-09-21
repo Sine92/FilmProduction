@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.CateringRepository.CaterImp.CaterRepoImp
 import za.ac.cput.projects.Services.CaterService.CaterTeamLerderService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("CaterServiceImpl")
 public class CaterServiceImpl implements CaterTeamLerderService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("CaterServiceImpl")
+    private CaterServiceImpl service = null;
     private CaterRepoImp caterRepoImp;
     @Override
     public Set<CaterTeamLeader> getAll() {

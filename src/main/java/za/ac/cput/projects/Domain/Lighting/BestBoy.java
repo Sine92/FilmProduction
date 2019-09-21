@@ -4,6 +4,7 @@ public class BestBoy {
     private String bbName;
     private String bbNumber;
     private double bbRate;
+    private String bbId;
 
     public  BestBoy()
     {
@@ -14,6 +15,7 @@ public class BestBoy {
         this.bbName = build.bbName;
         this.bbName = build.bbNumber;
         this.bbRate = build.bbRate;
+        this.bbId =build.bbId;
 
     }
 
@@ -32,6 +34,7 @@ public class BestBoy {
         private String bbName;
         private String bbNumber;
         private double bbRate;
+        private String bbId;
 
         public Builder bbName(String value)
         {
@@ -48,6 +51,13 @@ public class BestBoy {
             this.bbRate = value;
             return this;
         }
+
+        public Builder bbId(String value)
+        {
+            this.bbId = value;
+            return this;
+        }
+
         public BestBoy build()
         {
             return new BestBoy(this);

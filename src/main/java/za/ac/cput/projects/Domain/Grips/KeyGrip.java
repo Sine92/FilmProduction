@@ -5,6 +5,10 @@ public class KeyGrip {
     private String kgName;
     private String kgNumber;
     private double kgRate;
+    private String kgId;
+
+
+
 
     public KeyGrip()
     {
@@ -15,8 +19,11 @@ public class KeyGrip {
       this.kgName = build.kgName;
       this.kgNumber = build.kgNumber;
       this.kgRate = build.kgRate;
+      this.kgId = build.kgId;
     }
-
+    public String getKgId() {
+        return kgId;
+    }
     public String getKgName() {
         return kgName;
     }
@@ -32,6 +39,7 @@ public class KeyGrip {
         private String kgName;
         private String kgNumber;
         private double kgRate;
+        private String kgId;
 
         public Builder kgName(String value)
         {
@@ -48,6 +56,11 @@ public class KeyGrip {
             this.kgRate = value;
             return this;
 
+        }
+        public Builder kgId(String value)
+        {
+            this.kgId = value;
+            return this;
         }
         public KeyGrip build()
         {

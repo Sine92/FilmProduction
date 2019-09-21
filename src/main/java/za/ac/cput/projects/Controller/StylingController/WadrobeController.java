@@ -13,7 +13,7 @@ import java.util.Set;
 public class WadrobeController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("WadrobeServiceImpl")
     private WadrobeService wadrobeService;
 
     @PostMapping("/create")

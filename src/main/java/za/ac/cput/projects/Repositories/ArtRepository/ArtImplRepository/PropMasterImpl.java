@@ -21,40 +21,43 @@ public class PropMasterImpl implements PropMasterRepository {
         if (propMasterRepo == null) propMasterRepo = new PropMasterImpl();
         return propMasterRepo;
     }
+    private PropMaster findPropMaster(String proId){
+       return  this.propMasterSet.stream()
+               .filter(propMaster -> propMaster.getPropMasterId().trim().equals(proId))
+               .findAny()
+               .orElse(null);
+
+      }
 
     public PropMaster create(PropMaster propMaster)
     {
         this.propMasterSet.add(propMaster);
         return propMaster;
     }
-    public PropMaster read(String propMaster)
+    public PropMaster read(String propId)
     {
-        if(propMasterRepo.propMasterSet.contains(propMaster)){
-            for(PropMaster propMaster1: propMasterSet)
-            {
-              if(  propMaster1.equals(propMaster))
-                        return propMaster1;
-            }
-    }
-        return null;
+     PropMaster propMaster = findPropMaster(propId);
+     return propMaster;
+
     }
 
-    public PropMaster update(PropMaster propMaster)
-    {
-        if(propMasterSet.contains(propMaster))
-        {
-            for(PropMaster propMaster1: propMasterSet)
-            {
-                if(propMaster1.equals(propMaster))
-                    return propMaster1;
-            }
+    public PropMaster update(PropMaster propMaster) {
+
+        PropMaster toUpate = findPropMaster(propMaster.getPropMasterId());
+        if(toUpate!= null){
+            this.propMasterSet.remove(toUpate);
+            return create(propMaster);
         }
-        return propMaster;
+       return  null;
     }
+
     public void delete(String propId)
     {
 
-      propMasterSet.removeIf(t ->t.getPropMasterName().equals(propId));
+     PropMaster toDelete = findPropMaster(propId);
+      if(toDelete!=null){
+          this.propMasterSet.remove(toDelete);
+      }
 
     }
     public Set<PropMaster> getAll()

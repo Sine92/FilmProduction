@@ -10,10 +10,11 @@ import za.ac.cput.projects.Services.UnitService.UnitManagerService;
 import java.util.Map;
 import java.util.Set;
 
-@Service("ServiceImpl")
+@Service("UnitManagerServiceImpl")
 public class UnitManagerServiceImpl implements UnitManagerService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("UnitManagerServiceImpl")
+    private UnitManagerServiceImpl service = null;
     private UnitManRepository unitManRepository;
     @Override
     public Set<UnitManager> getAll() {

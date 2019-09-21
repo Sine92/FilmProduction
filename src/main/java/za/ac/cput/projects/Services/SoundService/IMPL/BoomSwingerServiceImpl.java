@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.SoundRepository.SoundImpRepository.Booms
 import za.ac.cput.projects.Services.SoundService.BoomSwingerService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("BoomSwingerServiceImpl")
 public class BoomSwingerServiceImpl implements BoomSwingerService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("BoomSwingerServiceImpl")
+    private BoomSwingerServiceImpl service = null;
     private BoomsingerImp boomsingerImp;
     @Override
     public Set<BoomSwinger> getAll() {

@@ -5,6 +5,11 @@ public class CamAssistant {
     private String camAssistName;
     private String camAssistNumber;
     private double camAssistRate;
+    private String camAssId;
+
+    public String getCamAssId() {
+        return camAssId;
+    }
 
     public CamAssistant ()
     {
@@ -16,6 +21,7 @@ public class CamAssistant {
         this.camAssistName = build.camAssistName;
         this.camAssistNumber = build.camAssistNumber;
         this.camAssistRate = build.camAssistRate;
+        this.camAssId = build.camAssId;
 
     }
 
@@ -35,7 +41,7 @@ public class CamAssistant {
         private String camAssistName;
         private String camAssistNumber;
         private double camAssistRate;
-
+        private String camAssId;
         public Builder camAssistName(String value)
         {
             this.camAssistName = value;
@@ -50,6 +56,11 @@ public class CamAssistant {
         {
             this.camAssistRate = value;
             return this;
+        }
+        public Builder camAssId(String value)
+        {
+           this.camAssId = value;
+           return this;
         }
         public CamAssistant build()
         {

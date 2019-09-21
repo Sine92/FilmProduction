@@ -12,7 +12,7 @@ import java.util.Set;
 @RequestMapping("/keyGrip")
 public class KeyGripController {
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("KeyGripServiceImpl")
     private KeyGripService keyGripService;
 
     @PostMapping("/create")

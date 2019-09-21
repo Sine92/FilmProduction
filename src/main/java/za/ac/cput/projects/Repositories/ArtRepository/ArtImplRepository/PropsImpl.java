@@ -18,6 +18,13 @@ public class PropsImpl implements PropRepository {
             return propRepo;
 
     }
+    private Props findProps(String propId)
+    {
+      return this.propsList.stream()
+      .filter(props -> props.getPropId().trim().equals(propId))
+              .findAny()
+              .orElse(null);
+    }
 
     private PropsImpl(){
 
@@ -30,34 +37,26 @@ public class PropsImpl implements PropRepository {
       return props;
 
     }
-    public Props read(String s)
+    public Props read(String propId)
     {
-       if(propRepo.propsList.contains(s))
-       {
-           for(Props p1: propsList)
-           {
-               if(p1.equals(s))
-                   return p1;
-           }
-       }
-        return null;
+       Props props = findProps(propId);
+       return props;
     }
     public Props update(Props props)
     {
-        if(propsList.contains(props))
-        {
-            for(Props props1 : propsList)
-            {
-                if(props1.equals(props))
-                    return props1;
-            }
+        Props toUpdate = findProps(props.getPropId());
+        if(toUpdate!=null){
+            this.propsList.remove(toUpdate);
+            return create(props);
         }
-
-        return props;
+        return null;
     }
     public void delete(String propsId)
     {
-        propsList.removeIf(t ->t.getPropsName().equals(propsId));
+        Props toDelete = findProps(propsId);
+        if(toDelete!=null){
+            this.propsList.remove(toDelete);
+        }
 
     }
     public Set<Props> getAllPr()

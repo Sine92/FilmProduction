@@ -13,7 +13,7 @@ import java.util.Set;
 public class TalentChapController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("TalentChapServiceImpl")
     private TalentChapService talentChapService;
 
     @PostMapping("/create")

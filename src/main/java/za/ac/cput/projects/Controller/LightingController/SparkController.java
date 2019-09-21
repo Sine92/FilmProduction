@@ -13,7 +13,7 @@ import java.util.Set;
 public class SparkController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
+    @Qualifier("SparkServiceImpl")
     private SparkService sparkService;
 
     @PostMapping("/create")

@@ -8,10 +8,11 @@ import za.ac.cput.projects.Repositories.LightingRepository.LightingImpRepository
 import za.ac.cput.projects.Services.LightingService.GafferService;
 
 import java.util.Set;
-@Service("ServiceImpl")
+@Service("GafferServiceImpl")
 public class GafferServiceImpl implements GafferService {
     @Autowired
-    @Qualifier("InMemory")
+    @Qualifier("GafferServiceImpl")
+    private GafferServiceImpl service = null;
     private GafferImp gafferImp;
     @Override
     public Set<Gaffer> getAll() {
