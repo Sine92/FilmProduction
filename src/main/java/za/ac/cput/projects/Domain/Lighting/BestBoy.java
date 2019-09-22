@@ -19,6 +19,10 @@ public class BestBoy {
 
     }
 
+    public String getBbId() {
+        return bbId;
+    }
+
     public String getBbName() {
         return bbName;
     }

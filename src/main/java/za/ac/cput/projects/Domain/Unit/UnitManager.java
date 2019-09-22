@@ -5,6 +5,7 @@ public class UnitManager {
     private String unMName;
     private String unMNumber;
     private double unMRate;
+    private String unMId;
 
     public UnitManager()
     {
@@ -15,7 +16,12 @@ public class UnitManager {
         this.unMName = build.unMName;
         this.unMNumber = build.unMNumber;
         this.unMRate =build.unMRate;
+        this.unMId = build.unMId;
 
+    }
+
+    public String getUnMId() {
+        return unMId;
     }
 
     public String getUnMName() {
@@ -33,6 +39,7 @@ public class UnitManager {
         private String unMName;
         private String unMNumber;
         private double unMRate;
+        private String unMId;
 
         public Builder unMName(String value)
         {
@@ -47,6 +54,11 @@ public class UnitManager {
         public Builder unMRate(double value)
         {
             this.unMRate = value;
+            return this;
+        }
+        public Builder unMId(String value)
+        {
+            this.unMId = value;
             return this;
         }
         public UnitManager build()

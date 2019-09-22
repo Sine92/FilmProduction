@@ -30,13 +30,13 @@ public class FirstADServiceImpl implements FirstADService {
     }
 
     @Override
-    public void delete(String s) {
-        firstADImp.delete(s);
+    public void delete(String spId) {
+        firstADImp.delete(spId);
 
     }
 
     @Override
-    public FirstAD read(String s) {
-        return firstADImp.read(s);
+    public FirstAD read(String spId) {
+        return firstADImp.read(spId);
     }
 }

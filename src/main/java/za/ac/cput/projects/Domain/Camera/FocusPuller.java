@@ -16,7 +16,11 @@ public class FocusPuller {
       this.focusPName = build.focusPName;
       this.focusPNumber = build.focusPNumber;
       this.focusPRate = build.focusPRate;
-      this.
+      this.focusPullerId= build.focusPullerId;
+    }
+
+    public String getFocusPullerId() {
+        return focusPullerId;
     }
 
     public String getFocusPName() {
@@ -35,6 +39,7 @@ public class FocusPuller {
         private String focusPName;
         private String focusPNumber;
         private double focusPRate;
+        private String focusPullerId;
 
 
         public Builder focusPName(String value)
@@ -50,6 +55,11 @@ public class FocusPuller {
         public Builder focusPRate(double value)
         {
             this.focusPRate = value;
+            return this;
+        }
+        public Builder focusPullerId(String value)
+        {
+            this.focusPullerId = value;
             return this;
         }
         public FocusPuller build()

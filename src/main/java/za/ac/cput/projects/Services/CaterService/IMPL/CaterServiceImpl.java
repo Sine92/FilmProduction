@@ -30,13 +30,13 @@ public class CaterServiceImpl implements CaterTeamLerderService {
     }
 
     @Override
-    public void delete(String s) {
-        caterRepoImp.delete(s);
+    public void delete(String ctId) {
+        caterRepoImp.delete(ctId);
 
     }
 
     @Override
-    public CaterTeamLeader read(String s) {
-        return caterRepoImp.read(s);
+    public CaterTeamLeader read(String ctId) {
+        return caterRepoImp.read(ctId);
     }
 }

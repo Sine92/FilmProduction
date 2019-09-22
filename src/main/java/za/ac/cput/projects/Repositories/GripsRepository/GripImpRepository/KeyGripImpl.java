@@ -21,6 +21,13 @@ public class KeyGripImpl implements KeyGripRepository {
         return keyGripImpl;
     }
 
+    private KeyGrip findKeyGrip(String kgId)
+    {
+        return this.keyGripSet.stream()
+                .filter(keyGrip -> keyGrip.getKgId().trim().equals(kgId))
+                .findAny()
+                .orElse(null);
+    }
     @Override
     public Set<KeyGrip> getAll() {
         return keyGripSet;
@@ -33,38 +40,26 @@ public class KeyGripImpl implements KeyGripRepository {
     }
 
     @Override
-    public void delete(String s) {
-        keyGripSet.removeIf(t->t.getKgName().equals(s));
-
+    public void delete(String kdId) {
+        KeyGrip toDelete = findKeyGrip(kdId);
+        if(toDelete!=null){
+            this.keyGripSet.remove(toDelete);
+        }
     }
 
     @Override
     public KeyGrip update(KeyGrip keyGrip) {
-        if(keyGripSet.contains(keyGrip))
-        {
-            for(KeyGrip keyGrip1: keyGripSet)
-            {
-                if(keyGrip1.equals(keyGrip))
-                {
-                    return keyGrip1;
-                }
-            }
+        KeyGrip toUpdate = findKeyGrip(keyGrip.getKgId());
+        if(toUpdate!=null){
+            this.keyGripSet.remove(toUpdate);
+            return create(keyGrip);
         }
         return null;
     }
 
     @Override
-    public KeyGrip read(String s) {
-        if(keyGripImpl.keyGripSet.contains(s))
-        {
-            for(KeyGrip keyGrip1:keyGripSet)
-            {
-                if(keyGrip1.equals(s))
-                {
-                    return keyGrip1;
-                }
-            }
-        }
-        return null;
+    public KeyGrip read(String kdId) {
+        KeyGrip keyGrip = findKeyGrip(kdId);
+        return keyGrip;
     }
 }

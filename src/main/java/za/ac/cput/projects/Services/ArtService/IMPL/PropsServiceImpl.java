@@ -30,13 +30,13 @@ public class PropsServiceImpl implements PropsService {
     }
 
     @Override
-    public void delete(String s) {
-        propsRepo.delete(s);
+    public void delete(String propId) {
+        propsRepo.delete(propId);
     }
 
     @Override
-    public Props read(String s) {
-        return propsRepo.read(s);
+    public Props read(String propId) {
+        return propsRepo.read(propId);
     }
 
     @Override

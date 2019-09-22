@@ -57,7 +57,7 @@ public class CaterTeamLeader {
             this.ctTRate = value;
             return this;
         }
-        public Builder vtId(String value)
+        public Builder ctId(String value)
         {
             this.ctTId = value;
             return this;

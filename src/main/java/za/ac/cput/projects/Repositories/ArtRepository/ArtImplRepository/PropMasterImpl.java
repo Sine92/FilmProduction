@@ -21,9 +21,9 @@ public class PropMasterImpl implements PropMasterRepository {
         if (propMasterRepo == null) propMasterRepo = new PropMasterImpl();
         return propMasterRepo;
     }
-    private PropMaster findPropMaster(String proId){
+    private PropMaster findPropMaster(String propMasterId){
        return  this.propMasterSet.stream()
-               .filter(propMaster -> propMaster.getPropMasterId().trim().equals(proId))
+               .filter(propMaster -> propMaster.getPropMasterId().trim().equals(propMasterId))
                .findAny()
                .orElse(null);
 
@@ -34,9 +34,9 @@ public class PropMasterImpl implements PropMasterRepository {
         this.propMasterSet.add(propMaster);
         return propMaster;
     }
-    public PropMaster read(String propId)
+    public PropMaster read(String propMasterId)
     {
-     PropMaster propMaster = findPropMaster(propId);
+     PropMaster propMaster = findPropMaster(propMasterId);
      return propMaster;
 
     }
@@ -51,10 +51,10 @@ public class PropMasterImpl implements PropMasterRepository {
        return  null;
     }
 
-    public void delete(String propId)
+    public void delete(String propMasterId)
     {
 
-     PropMaster toDelete = findPropMaster(propId);
+     PropMaster toDelete = findPropMaster(propMasterId);
       if(toDelete!=null){
           this.propMasterSet.remove(toDelete);
       }

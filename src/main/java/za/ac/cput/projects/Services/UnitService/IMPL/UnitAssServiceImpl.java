@@ -32,13 +32,13 @@ public class UnitAssServiceImpl implements UnitAssService {
     }
 
     @Override
-    public void delete(String s) {
-        unitAssImp.delete(s);
+    public void delete(String unId) {
+        unitAssImp.delete(unId);
 
     }
 
     @Override
-    public UnitAssist read(String s) {
-        return unitAssImp.read(s);
+    public UnitAssist read(String unId) {
+        return unitAssImp.read(unId);
     }
 }

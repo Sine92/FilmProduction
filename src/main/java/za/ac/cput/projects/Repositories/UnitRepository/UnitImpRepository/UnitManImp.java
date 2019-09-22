@@ -22,6 +22,13 @@ public class UnitManImp implements UnitManRepository {
         if(unitManImp == null) unitManImp = new UnitManImp();
         return unitManImp;
     }
+    public UnitManager findUniMan(String unMId)
+    {
+        return this.unitManagerSet.stream()
+                .filter(unitManager -> unitManager.getUnMId().trim().equals(unMId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<UnitManager> getAll() {
@@ -36,38 +43,27 @@ public class UnitManImp implements UnitManRepository {
     }
 
     @Override
-    public void delete(String s) {
-        unitManagerSet.removeIf(t->t.getUnMName().equals(s));
+    public void delete(String unMId) {
+       UnitManager toDelete = findUniMan(unMId);
+       if(toDelete!=null){
+           this.unitManagerSet.remove(toDelete);
+       }
 
     }
 
     @Override
     public UnitManager update(UnitManager unitManager) {
-        if(unitManagerSet.contains(unitManager))
-        {
-            for(UnitManager unitManager1: unitManagerSet)
-            {
-                if(unitManager1.equals(unitManager)){
-                    return unitManager1;
-                }
-            }
+        UnitManager toUpdate = findUniMan(unitManager.getUnMId());
+        if(toUpdate!=null){
+            this.unitManagerSet.remove(toUpdate);
+            return create(unitManager);
         }
-
-        return null;
+       return null;
     }
 
     @Override
-    public UnitManager read(String s) {
-        if(unitManImp.unitManagerSet.contains(s)){
-            for(UnitManager unitManager1: unitManagerSet)
-            {
-                if(unitManager1.equals(s))
-                {
-                    return unitManager1;
-                }
-            }
-        }
-
-        return null;
+    public UnitManager read(String unMId) {
+      UnitManager unitManager = findUniMan(unMId);
+      return unitManager;
     }
 }

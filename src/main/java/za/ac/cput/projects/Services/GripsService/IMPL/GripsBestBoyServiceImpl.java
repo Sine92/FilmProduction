@@ -30,13 +30,13 @@ public class GripsBestBoyServiceImpl implements GripBestBoyService {
     }
 
     @Override
-    public void delete(String s) {
-        gripsBestBoyImp.delete(s);
+    public void delete(String gbId) {
+        gripsBestBoyImp.delete(gbId);
 
     }
 
     @Override
-    public GripBestBoy read(String s) {
-        return gripsBestBoyImp.read(s);
+    public GripBestBoy read(String gbId) {
+        return gripsBestBoyImp.read(gbId);
     }
 }

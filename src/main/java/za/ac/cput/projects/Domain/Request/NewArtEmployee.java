@@ -2,7 +2,31 @@ package za.ac.cput.projects.Domain.Request;
 
 public class NewArtEmployee {
 
-    private String number, firstName, lastName, role;
+    private String number, firstName, lastName, artDirector, propMaster, props;
+
+    public String getArtDirector() {
+        return artDirector;
+    }
+
+    public void setArtDirector(String artDirector) {
+        this.artDirector = artDirector;
+    }
+
+    public String getPropMaster() {
+        return propMaster;
+    }
+
+    public void setPropMaster(String propMaster) {
+        this.propMaster = propMaster;
+    }
+
+    public String getProps() {
+        return props;
+    }
+
+    public void setProps(String props) {
+        this.props = props;
+    }
 
     public String getNumber() {
         return number;
@@ -29,9 +53,7 @@ public class NewArtEmployee {
         role = role;
     }
 
-    public String getRole() {
-        return role;
-    }
+
     @Override
     public String toString()
     {
@@ -39,7 +61,9 @@ public class NewArtEmployee {
                 + "number='" + number+ '\''+
             ",firstName='"+firstName+'\''+
             ",lastName='"+lastName+'\''+
-            ",role='"+role+'\''+'}';
+                ",ArtDirector='"+artDirector+'\''+
+                ",PropMaster='"+propMaster+'\''+
+                ",Props='"+props+'\''+ '}';
 
 
     }

@@ -14,7 +14,13 @@ public class ProducerImp implements ProducerRepo {
         if(producerImp == null) producerImp = new ProducerImp();
         return producerImp;
     }
-
+    private Producer findProducer(String prodId)
+    {
+        return this.producerSet.stream()
+                .filter(producer -> producer.getProdId().trim().equals(prodId))
+                .findAny()
+                .orElse(null);
+    }
     @Override
     public Set<Producer> getAll() {
         return producerSet;
@@ -28,40 +34,28 @@ public class ProducerImp implements ProducerRepo {
     }
 
     @Override
-    public void delete(String s) {
-        producerSet.removeIf(t->t.getProdName().equals(s));
+    public void delete(String prodId) {
+       Producer toDelete = findProducer(prodId);
+       if(toDelete!=null){
+           this.producerSet.remove(toDelete);
+       }
 
 
     }
 
     @Override
     public Producer update(Producer producer) {
-
-        if(producerSet.contains(producer))
-        {
-            for(Producer producer1: producerSet)
-            {
-                if(producer1.equals(producer))
-                {
-                    return producer1;
-                }
-            }
-        }
-        return null;
+       Producer toUpdate = findProducer(producer.getProdId());
+       if(toUpdate!=null){
+           this.producerSet.remove(toUpdate);
+           return create(producer);
+       }
+       return null;
     }
 
     @Override
-    public Producer read(String s) {
-        if(producerImp.producerSet.contains(s))
-        {
-            for(Producer producer1: producerSet)
-            {
-                if(producer1.equals(s))
-                {
-                    return producer1;
-                }
-            }
-        }
-        return null;
+    public Producer read(String prodId) {
+       Producer producer = findProducer(prodId);
+       return producer;
     }
 }

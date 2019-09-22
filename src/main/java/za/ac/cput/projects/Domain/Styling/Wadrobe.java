@@ -5,6 +5,7 @@ public class Wadrobe {
     private String wadName;
     private String wadNumber;
     private double wadRate;
+    private String wadId;
 
     public Wadrobe()
     {
@@ -15,7 +16,12 @@ public class Wadrobe {
         this.wadName=build.wadName;
         this.wadNumber=build.wadNumber;
         this.wadRate = build.wadRate;
+        this.wadId = build.wadId;
 
+    }
+
+    public String getWadId() {
+        return wadId;
     }
 
     public String getWadName() {
@@ -33,6 +39,7 @@ public class Wadrobe {
         private String wadName;
         private String wadNumber;
         private double wadRate;
+        private String wadId;
 
         public Builder wadName(String value)
         {
@@ -49,6 +56,11 @@ public class Wadrobe {
             this.wadRate = value;
             return this;
 
+        }
+        public Builder wadId(String value)
+        {
+            this.wadId = value;
+            return this;
         }
         public Wadrobe build()
         {

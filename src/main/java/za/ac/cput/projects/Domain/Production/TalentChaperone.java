@@ -7,6 +7,7 @@ public class TalentChaperone {
     private String talName;
     private String talNumber;
     private double talRate;
+    private String talId;
 
 
     public TalentChaperone()
@@ -18,7 +19,12 @@ public class TalentChaperone {
         this.talName= build.talName;
         this.talNumber = build.talNumber;
         this.talRate = build.talRate;
+        this.talId = build.talId;
 
+    }
+
+    public String getTalId() {
+        return talId;
     }
 
     public String getTalName() {
@@ -36,6 +42,7 @@ public class TalentChaperone {
         private String talName;
         private String talNumber;
         private double talRate;
+        private String talId;
 
         public Builder talName(String value)
         {
@@ -50,6 +57,11 @@ public class TalentChaperone {
         public Builder talRate(double value)
         {
             this.talRate = value;
+            return this;
+        }
+        public Builder talId(String value)
+        {
+            this.talId = value;
             return this;
         }
         public TalentChaperone build()

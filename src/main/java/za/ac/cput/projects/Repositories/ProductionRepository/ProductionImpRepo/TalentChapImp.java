@@ -14,7 +14,13 @@ public class TalentChapImp implements TalentChaperoneRepo {
         if(talentChapImp == null) talentChapImp = new TalentChapImp();
         return talentChapImp;
     }
-
+     private TalentChaperone findTalChap(String talId)
+     {
+         return this.talentChaperoneSet.stream()
+                 .filter(talentChaperone -> talentChaperone.getTalId().trim().equals(talId))
+                 .findAny()
+                 .orElse(null);
+     }
     @Override
     public Set<TalentChaperone> getAll() {
         return talentChaperoneSet;
@@ -27,39 +33,28 @@ public class TalentChapImp implements TalentChaperoneRepo {
     }
 
     @Override
-    public void delete(String s) {
-        talentChaperoneSet.removeIf(t->t.getTalName().equals(s));
+    public void delete(String talId) {
+       TalentChaperone toDelete = findTalChap(talId);
+       if(toDelete!=null){
+           this.talentChaperoneSet.remove(toDelete);
+       }
 
     }
 
     @Override
     public TalentChaperone update(TalentChaperone talentChaperone) {
-        if(talentChaperoneSet.contains(talentChaperone))
-        {
-            for(TalentChaperone talentChaperone1:talentChaperoneSet)
-            {
-                if(talentChaperone1.equals(talentChaperone))
-                {
-                    return talentChaperone;
-                }
-            }
+        TalentChaperone toUpdate = findTalChap(talentChaperone.getTalId());
+        if(toUpdate!=null){
+            this.talentChaperoneSet.remove(toUpdate);
+            return create(talentChaperone);
         }
-        return null;
+       return null;
     }
 
     @Override
-    public TalentChaperone read(String s) {
+    public TalentChaperone read(String talId) {
 
-        if(talentChapImp.talentChaperoneSet.contains(s))
-        {
-            for(TalentChaperone talentChaperone1:talentChaperoneSet)
-            {
-                if(talentChaperone1.equals(s))
-                {
-                    return talentChaperone1;
-                }
-            }
-        }
-        return null;
+        TalentChaperone talentChaperone = findTalChap(talId);
+        return talentChaperone;
     }
 }

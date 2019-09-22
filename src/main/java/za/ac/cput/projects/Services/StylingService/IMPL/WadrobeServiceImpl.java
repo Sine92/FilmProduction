@@ -35,13 +35,13 @@ public class WadrobeServiceImpl implements WadrobeService {
      }
 
      @Override
-     public void delete(String s) {
-         wadrobeImp.delete(s);
+     public void delete(String wadId) {
+         wadrobeImp.delete(wadId);
 
      }
 
      @Override
-     public Wadrobe read(String s) {
-         return wadrobeImp.read(s);
+     public Wadrobe read(String wadId) {
+         return wadrobeImp.read(wadId);
      }
  }

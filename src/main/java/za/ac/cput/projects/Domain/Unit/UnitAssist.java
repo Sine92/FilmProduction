@@ -5,6 +5,7 @@ public class UnitAssist {
     private String unName;
     private String unNumber;
     private double unRate;
+    private String unId;
 
     public UnitAssist()
     {
@@ -15,7 +16,12 @@ public class UnitAssist {
         this.unName = build.unName;
         this.unNumber = build.unNumber;
         this.unRate = build.unRate;
+        this.unId = build.unId;
 
+    }
+
+    public String getUnId() {
+        return unId;
     }
 
     public String getUnName() {
@@ -34,6 +40,7 @@ public class UnitAssist {
         private String unName;
         private String unNumber;
         private double unRate;
+        private String unId;
 
         public Builder unName(String value)
         {
@@ -48,6 +55,11 @@ public class UnitAssist {
         public Builder unRate(double value)
         {
             this.unRate = value;
+            return this;
+        }
+        public  Builder unId(String value)
+        {
+            this.unId = value;
             return this;
         }
         public UnitAssist build()

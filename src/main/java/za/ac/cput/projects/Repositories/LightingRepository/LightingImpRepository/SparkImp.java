@@ -14,6 +14,13 @@ public class SparkImp implements SparkRepository {
         if(sparkImp == null) sparkImp = new SparkImp();
         return sparkImp;
     }
+    private Spark findSpark(String spId)
+    {
+        return this.sparkSet.stream()
+                .filter(spark -> spark.getSpId().trim().equals(spId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<Spark> getAll() {
@@ -28,39 +35,28 @@ public class SparkImp implements SparkRepository {
     }
 
     @Override
-    public void delete(String s) {
-        sparkSet.removeIf(t->t.getSpName().equals(s));
+    public void delete(String spId) {
+       Spark toDelete = findSpark(spId);
+       if(toDelete!=null){
+           this.sparkSet.remove(toDelete);
+       }
 
     }
 
     @Override
     public Spark update(Spark spark) {
-        if(sparkSet.contains(spark))
-        {
-            for(Spark spark1:sparkSet)
-            {
-                if(spark1.equals(spark))
-                {
-                    return spark1;
-                }
-            }
-        }
-        return null;
+       Spark toUpdate = findSpark(spark.getSpId());
+       if(toUpdate!=null){
+           this.sparkSet.remove(toUpdate);
+           return create(spark);
+       }
+       return null;
     }
 
     @Override
-    public Spark read(String s) {
+    public Spark read(String spId) {
 
-        if(sparkImp.sparkSet.contains(s))
-        {
-            for(Spark spark1: sparkSet)
-            {
-                if(spark1.equals(s))
-                {
-                    return spark1;
-                }
-            }
-        }
-        return null;
+        Spark spark = findSpark(spId);
+        return spark;
     }
 }

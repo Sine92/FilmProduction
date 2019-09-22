@@ -20,6 +20,14 @@ public class UnitAssImp implements UnitAsRepository {
         if(unitAssImp == null)unitAssImp = new UnitAssImp();
         return unitAssImp;
     }
+    private UnitAssist findUnitAss(String unId)
+    {
+        return this.unitAssistSet.stream()
+                .filter(unitAssist -> unitAssist.getUnId().trim().equals(unId))
+                .findAny()
+                .orElse(null);
+    }
+
 
     @Override
     public Set<UnitAssist> getAll() {
@@ -34,42 +42,30 @@ public class UnitAssImp implements UnitAsRepository {
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(String unId) {
+     UnitAssist toDelete = findUnitAss(unId);
+     if(toDelete!=null){
+         this.unitAssistSet.remove(toDelete);
+     }
 
-        unitAssistSet.removeIf(t->t.getUnName().equals(s));
 
     }
 
     @Override
     public UnitAssist update(UnitAssist unitAssist) {
-
-        if(unitAssistSet.contains(unitAssist))
-        {
-            for(UnitAssist unitAssist1: unitAssistSet)
-            {
-                if(unitAssist1.equals(unitAssist)){
-                    return unitAssist1;
-                }
-            }
+        UnitAssist toUpdate = findUnitAss(unitAssist.getUnId());
+        if(toUpdate!=null){
+            this.unitAssistSet.remove(toUpdate);
+            return create(unitAssist);
         }
-        return null;
+       return null;
     }
 
     @Override
-    public UnitAssist read(String s) {
+    public UnitAssist read(String unId) {
 
-
-        if(unitAssImp.unitAssistSet.contains(s))
-        {
-            for(UnitAssist unitAssist1: unitAssistSet)
-            {
-                if(unitAssist1.equals(s))
-                    return unitAssist1;
-            }
-        }
-
-        return null;
-
+        UnitAssist unitAssist = findUnitAss(unId);
+        return unitAssist;
 
     }
 }

@@ -34,6 +34,11 @@ public class ArtDirectServiceImpl implements ArtDirectService {
         return service;
     }
     @Override
+    private ArtDirector displayBy(String ArtDRole){
+      return this.artRepo.
+    }
+
+    @Override
     public Set<ArtDirector> getAll() {
         return this.artRepo.getAll();
     }
@@ -48,14 +53,15 @@ public class ArtDirectServiceImpl implements ArtDirectService {
         return this.artRepo.update(artDirector);
     }
 
+
     @Override
-    public void delete(String s) {
-         this.artRepo.delete(s);
+    public void delete(String artId) {
+         this.artRepo.delete(artId);
 
     }
 
     @Override
-    public ArtDirector read(String s) {
-        return this.artRepo.read(s);
+    public ArtDirector read(String artId) {
+        return this.artRepo.read(artId);
     }
 }

@@ -6,7 +6,7 @@ import za.ac.cput.projects.Repositories.IRepository;
 import java.util.Set;
 
 public interface ArtDirectorRepository extends IRepository<ArtDirector, String> {
-
+     ArtDirector displayBy(String artDRole);
     Set<ArtDirector> getAll();
 
 

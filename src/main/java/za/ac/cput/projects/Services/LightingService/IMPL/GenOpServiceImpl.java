@@ -31,13 +31,13 @@ public class GenOpServiceImpl implements GenOpService {
     }
 
     @Override
-    public void delete(String s) {
-        genOpImp.delete(s);
+    public void delete(String genId) {
+        genOpImp.delete(genId);
 
     }
 
     @Override
-    public GeneratorOp read(String s) {
-        return genOpImp.read(s);
+    public GeneratorOp read(String genId) {
+        return genOpImp.read(genId);
     }
 }

@@ -30,13 +30,13 @@ public class ProdManagerServiceImpl implements ProdManagerService {
     }
 
     @Override
-    public void delete(String s) {
-        prodManagerImp.delete(s);
+    public void delete(String prId) {
+        prodManagerImp.delete(prId);
 
     }
 
     @Override
-    public ProdManager read(String s) {
-        return prodManagerImp.read(s);
+    public ProdManager read(String prId) {
+        return prodManagerImp.read(prId);
     }
 }

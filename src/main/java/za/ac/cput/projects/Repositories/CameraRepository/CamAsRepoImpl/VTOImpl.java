@@ -20,6 +20,13 @@ public class VTOImpl implements VTORepository {
         if( vtoRepo == null) vtoRepo = new VTOImpl();
         return vtoRepo;
     }
+    private VTO findVTO(String vtId)
+    {
+        return  this.vtoSet.stream()
+                .filter(vto -> vto.getVtId().trim().equals(vtId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<VTO> getAll() {
@@ -33,38 +40,28 @@ public class VTOImpl implements VTORepository {
     }
 
     @Override
-    public void delete(String s) {
-         vtoSet.removeIf(t->t.getvTName().equals(s));
+    public void delete(String vtId) {
+      VTO toDelete = findVTO(vtId);
+      if(toDelete!=null)
+      {
+        this.vtoSet.remove(toDelete);
+      }
 
     }
 
     @Override
     public VTO update(VTO vto) {
-         if(vtoSet.contains(vto))
-         {
-             for(VTO vto1: vtoSet)
-             {
-                 if(vto1.equals(vto))
-                 {
-                     return vto1;
-                 }
-             }
+         VTO toUpate = findVTO(vto.getVtId());
+         if(toUpate!=null){
+             this.vtoSet.remove(toUpate);
+             return create(vto);
          }
         return null;
     }
 
     @Override
-    public VTO read(String s) {
-         if(vtoRepo.vtoSet.contains(s))
-         {
-             for(VTO vto1:vtoSet)
-             {
-                 if (vto1.equals(s))
-                 {
-                     return vto1;
-                 }
-             }
-         }
-        return null;
+    public VTO read(String vtId) {
+         VTO vto = findVTO(vtId);
+         return vto;
     }
 }

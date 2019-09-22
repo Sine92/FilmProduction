@@ -21,6 +21,13 @@ public class DITImpl implements DITRepository
         if(ditImpl== null)ditImpl = new DITImpl();
         return ditImpl;
     }
+    private DIT findDit(String ditId)
+    {
+        return this.ditSet.stream()
+                .filter(dit -> dit.getDitId().trim().equals(ditId))
+                .findAny()
+                .orElse(null);
+    }
 
 
     @Override
@@ -35,39 +42,30 @@ public class DITImpl implements DITRepository
     }
 
     @Override
-    public void delete(String s) {
-        ditSet.removeIf(t->t.getDitName().equals(s));
+    public void delete(String ditId) {
+        DIT toDelete = findDit(ditId);
+        if(toDelete!= null){
+            this.ditSet.remove(toDelete);
+        }
+
 
     }
 
     @Override
     public DIT update(DIT dit) {
 
-        if(ditSet.contains(dit))
-        {
-            for(DIT dit1:ditSet)
-            {
-                if(dit1.equals(dit))
-                {
-                    return dit1;
-                }
-            }
+        DIT toUpdate = findDit(dit.getDitId());
+        if(toUpdate != null){
+            this.ditSet.remove(toUpdate);
+            return create(dit);
         }
-        return null;
+       return null;
     }
 
     @Override
-    public DIT read(String s) {
-        if(ditImpl.ditSet.contains(s))
-        {
-            for(DIT dit1:ditSet)
-            {
-                if(dit1.equals(s))
-                {
-                    return dit1;
-                }
-            }
-        }
-        return null;
+    public DIT read(String ditId) {
+
+        DIT dit = findDit(ditId);
+        return dit;
     }
 }

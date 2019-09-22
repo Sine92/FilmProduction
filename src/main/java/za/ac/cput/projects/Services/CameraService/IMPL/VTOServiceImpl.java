@@ -30,13 +30,13 @@ public class VTOServiceImpl implements VTOService {
     }
 
     @Override
-    public void delete(String s) {
-        vtoImp.delete(s);
+    public void delete(String vtId) {
+        vtoImp.delete(vtId);
 
     }
 
     @Override
-    public VTO read(String s) {
-        return vtoImp.read(s);
+    public VTO read(String vtId) {
+        return vtoImp.read(vtId);
     }
 }

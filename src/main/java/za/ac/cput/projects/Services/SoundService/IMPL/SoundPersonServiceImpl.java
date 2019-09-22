@@ -30,13 +30,13 @@ public class SoundPersonServiceImpl implements SoundPersonService {
     }
 
     @Override
-    public void delete(String s) {
-        soundPersonImp.delete(s);
+    public void delete(String spId) {
+        soundPersonImp.delete(spId);
 
     }
 
     @Override
-    public SoundPerson read(String s) {
-        return soundPersonImp.read(s);
+    public SoundPerson read(String spId) {
+        return soundPersonImp.read(spId);
     }
 }

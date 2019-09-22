@@ -30,13 +30,13 @@ public class MedicServiceImpl implements MedicService {
     }
 
     @Override
-    public void delete(String s) {
-        medicImp.delete(s);
+    public void delete(String medId) {
+        medicImp.delete(medId);
 
     }
 
     @Override
-    public Medic read(String s) {
-        return medicImp.read(s);
+    public Medic read(String medId) {
+        return medicImp.read(medId);
     }
 }

@@ -14,6 +14,13 @@ public class ProdManagerImp implements ProdManagerRepo {
         if(prodManagerImp == null) prodManagerImp = new ProdManagerImp();
         return  prodManagerImp;
     }
+    private ProdManager findProdManager(String prId)
+    {
+        return this.prodManagerSet.stream()
+                .filter(prodManager -> prodManager.getPrId().trim().equals(prId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<ProdManager> getAll() {
@@ -28,38 +35,27 @@ public class ProdManagerImp implements ProdManagerRepo {
     }
 
     @Override
-    public void delete(String s) {
-        prodManagerSet.removeIf(t->t.getPrManName().equals(s));
+    public void delete(String prId) {
+         ProdManager toDelete = findProdManager(prId);
+         if(toDelete!=null){
+             this.prodManagerSet.remove(prId);
+         }
 
     }
 
     @Override
     public ProdManager update(ProdManager prodManager) {
-        if(prodManagerSet.contains(prodManager))
-        {
-            for(ProdManager prodManager1:prodManagerSet)
-            {
-                if(prodManager1.equals(prodManager))
-                {
-                    return prodManager1;
-                }
-            }
-        }
-        return null;
+       ProdManager toUpdate = findProdManager(prodManager.getPrId());
+       if(toUpdate!=null){
+           this.prodManagerSet.remove(toUpdate);
+           return create(prodManager);
+       }
+       return null;
     }
 
     @Override
-    public ProdManager read(String s) {
-        if(prodManagerImp.prodManagerSet.contains(s))
-        {
-            for(ProdManager prodManager1: prodManagerSet)
-            {
-                if(prodManager1.equals(s))
-                {
-                    return prodManager1;
-                }
-            }
-        }
-        return null;
+    public ProdManager read(String prId) {
+       ProdManager prodManager = findProdManager(prId);
+       return prodManager;
     }
 }

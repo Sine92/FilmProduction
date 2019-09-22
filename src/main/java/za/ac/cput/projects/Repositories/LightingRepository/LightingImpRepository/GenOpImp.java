@@ -13,6 +13,12 @@ public class GenOpImp implements GenOpRepository {
         if(genOpImp == null) genOpImp = new GenOpImp();
         return  genOpImp;
     }
+    private GeneratorOp findGeneratorOp(String genId){
+        return this.generatorOpSet.stream()
+                .filter(generatorOp -> generatorOp.getGenId().trim().equals(genId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<GeneratorOp> getAll() {
@@ -26,39 +32,28 @@ public class GenOpImp implements GenOpRepository {
     }
 
     @Override
-    public void delete(String s) {
-        generatorOpSet.removeIf(t->t.getGenName().equals(s));
+    public void delete(String genId) {
+        GeneratorOp toDelete = findGeneratorOp(genId);
+        if(toDelete!=null){
+            this.generatorOpSet.remove(toDelete);
+        }
 
     }
 
     @Override
     public GeneratorOp update(GeneratorOp generatorOp) {
-        if(generatorOpSet.contains(generatorOp))
-        {
-            for(GeneratorOp generatorOp1:generatorOpSet)
-            {
-                if(generatorOp1.equals(generatorOp))
-                {
-                    return generatorOp1;
-                }
-            }
+        GeneratorOp toUpdate = findGeneratorOp(generatorOp.getGenId());
+        if(toUpdate!=null){
+            this.generatorOpSet.remove(toUpdate);
+            return create(generatorOp);
         }
         return null;
     }
 
     @Override
-    public GeneratorOp read(String s)
+    public GeneratorOp read(String genId)
     {
-        if(genOpImp.generatorOpSet.contains(s))
-        {
-            for(GeneratorOp generatorOp: generatorOpSet)
-            {
-                if(generatorOp.equals(s))
-                {
-                    return generatorOp;
-                }
-            }
-        }
-        return null;
+       GeneratorOp generatorOp = findGeneratorOp(genId);
+       return generatorOp;
     }
 }

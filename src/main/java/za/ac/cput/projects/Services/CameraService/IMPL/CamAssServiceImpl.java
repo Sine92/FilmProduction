@@ -33,8 +33,8 @@ public class CamAssServiceImpl implements CamAssService {
     }
 
     @Override
-    public void delete(String s) {
-        camAssistantImp.delete(s);
+    public void delete(String camAssId) {
+        camAssistantImp.delete(camAssId);
 
     }
 

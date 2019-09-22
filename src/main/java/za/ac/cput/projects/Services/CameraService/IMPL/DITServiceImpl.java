@@ -30,13 +30,13 @@ public class DITServiceImpl implements DITService {
     }
 
     @Override
-    public void delete(String s) {
-        ditImpl.delete(s);
+    public void delete(String ditId) {
+        ditImpl.delete(ditId);
 
     }
 
     @Override
-    public DIT read(String s) {
-        return ditImpl.read(s);
+    public DIT read(String ditId) {
+        return ditImpl.read(ditId);
     }
 }

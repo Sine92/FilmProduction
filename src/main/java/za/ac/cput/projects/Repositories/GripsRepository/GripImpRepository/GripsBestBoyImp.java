@@ -19,6 +19,13 @@ public class GripsBestBoyImp implements GripBoyRepository {
       if(gripsBestBoyImp ==  null) gripsBestBoyImp = new GripsBestBoyImp();
       return gripsBestBoyImp;
   }
+  private GripBestBoy findGrip(String gbId)
+  {
+      return this.gripBestBoySet.stream()
+              .filter(gripBestBoy -> gripBestBoy.getGbId().trim().equals(gbId))
+              .findAny()
+              .orElse(null);
+  }
 
     @Override
     public Set<GripBestBoy> getAll() {
@@ -28,44 +35,33 @@ public class GripsBestBoyImp implements GripBoyRepository {
     @Override
     public GripBestBoy create(GripBestBoy gripBestBoy) {
         this.gripBestBoySet.add(gripBestBoy);
-
         return gripBestBoy;
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(String gbId) {
 
-      gripBestBoySet.removeIf(t->t.getGbName().equals(s));
+      GripBestBoy toDelete = findGrip(gbId);
+      if(toDelete!=null){
+          this.gripBestBoySet.remove(toDelete);
+      }
+
 
     }
 
     @Override
     public GripBestBoy update(GripBestBoy gripBestBoy) {
-      if(gripBestBoySet.contains(gripBestBoy))
-      {
-          for(GripBestBoy gripBestBoy1:gripBestBoySet)
-          {
-              if(gripBestBoy1.equals(gripBestBoy))
-              {
-                  return gripBestBoy1;
-              }
-          }
-      }
-        return null;
+     GripBestBoy toUpdate = findGrip(gripBestBoy.getGbId());
+     if(toUpdate!=null){
+         this.gripBestBoySet.remove(toUpdate);
+         return create(gripBestBoy);
+     }
+     return null;
     }
 
     @Override
-    public GripBestBoy read(String s) {
-      if(gripsBestBoyImp.gripBestBoySet.contains(s))
-      {
-          for(GripBestBoy gripBestBoy1: gripBestBoySet)
-          {
-              if(gripBestBoy1.equals(s))
-              {
-                  return gripBestBoy1;
-              }
-          }
-      }
-        return null;
+    public GripBestBoy read(String gbId) {
+     GripBestBoy gripBestBoy = findGrip(gbId);
+     return gripBestBoy;
     }
 }

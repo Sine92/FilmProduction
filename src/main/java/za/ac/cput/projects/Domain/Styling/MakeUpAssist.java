@@ -5,6 +5,7 @@ public class MakeUpAssist {
     private String makeUAName;
     private String makeUANumber;
     private double makeUARate;
+    private String makeUAId;
 
     public MakeUpAssist()
     {
@@ -15,7 +16,12 @@ public class MakeUpAssist {
         this.makeUAName= build.makeUAName;
         this.makeUANumber= build.makeUANumber;
         this.makeUARate = build.makeUARate;
+        this.makeUAId = build.makeUAId;
 
+    }
+
+    public String getMakeUAId() {
+        return makeUAId;
     }
 
     public String getMakeUAName() {
@@ -33,7 +39,7 @@ public class MakeUpAssist {
         private String makeUAName;
         private String makeUANumber;
         private double makeUARate;
-
+        private String makeUAId;
         public Builder makeUAName(String value)
         {
             this.makeUAName = value;
@@ -47,6 +53,11 @@ public class MakeUpAssist {
         public Builder makeUARate(double value)
         {
             this.makeUARate = value;
+            return this;
+        }
+        public Builder makeUAId(String value)
+        {
+            this.makeUAId = value;
             return this;
         }
         public MakeUpAssist build()

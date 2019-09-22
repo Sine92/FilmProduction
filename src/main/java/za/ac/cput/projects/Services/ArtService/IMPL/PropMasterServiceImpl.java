@@ -35,13 +35,13 @@ public class PropMasterServiceImpl implements PropMasterService {
     }
 
     @Override
-    public void delete(String s) {
-        propMasterRepo.delete(s);
+    public void delete(String propMasterId) {
+        propMasterRepo.delete(propMasterId);
 
     }
 
     @Override
-    public PropMaster read(String s) {
-        return propMasterRepo.read(s);
+    public PropMaster read(String propMasterId) {
+        return propMasterRepo.read(propMasterId);
     }
 }

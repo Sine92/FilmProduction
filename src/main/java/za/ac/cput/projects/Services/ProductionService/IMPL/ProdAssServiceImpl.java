@@ -30,13 +30,13 @@ public class ProdAssServiceImpl implements ProdAssService {
     }
 
     @Override
-    public void delete(String s) {
-        prodAssImp.delete(s);
+    public void delete(String paId) {
+        prodAssImp.delete(paId);
 
     }
 
     @Override
-    public ProductionAssist read(String s) {
-        return prodAssImp.read(s);
+    public ProductionAssist read(String paId) {
+        return prodAssImp.read(paId);
     }
 }

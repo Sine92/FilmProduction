@@ -5,6 +5,7 @@ public class BoomSwinger {
     private String bsName;
     private String bsNumber;
     private double bsRate;
+    private String bsId;
 
     public BoomSwinger()
     {
@@ -15,7 +16,12 @@ public class BoomSwinger {
         this.bsName = build.bsName;
         this.bsNumber = build.bsNumber;
         this.bsRate = build.bsRate;
+        this.bsId = build.bsId;
 
+    }
+
+    public String getBsId() {
+        return bsId;
     }
 
     public String getBsName() {
@@ -35,6 +41,7 @@ public class BoomSwinger {
         private String bsName;
         private String bsNumber;
         private double bsRate;
+        private String bsId;
 
         public Builder bsName(String value)
         {
@@ -49,6 +56,11 @@ public class BoomSwinger {
         public Builder bsRate(double value)
         {
             this.bsRate = value;
+            return this;
+        }
+        public Builder bsId(String value)
+        {
+            this.bsId = value;
             return this;
         }
         public BoomSwinger build()

@@ -30,13 +30,13 @@ public class FocusPullerServiceImpl implements FocusPullerService {
     }
 
     @Override
-    public void delete(String s) {
-        focusPullerImp.delete(s);
+    public void delete(String focusPullerId) {
+        focusPullerImp.delete(focusPullerId);
 
     }
 
     @Override
-    public FocusPuller read(String s) {
-        return focusPullerImp.read(s);
+    public FocusPuller read(String focusPullerId) {
+        return focusPullerImp.read(focusPullerId);
     }
 }

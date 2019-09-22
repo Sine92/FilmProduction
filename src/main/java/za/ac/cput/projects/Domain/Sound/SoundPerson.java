@@ -4,6 +4,7 @@ public class SoundPerson {
     private String spName;
     private String spNumber;
     private double spRate;
+    private String spId;
 
     public SoundPerson()
     {
@@ -14,7 +15,12 @@ public class SoundPerson {
         this.spName = build.spName;
         this.spNumber = build.spNumber;
         this.spRate = build.spRate;
+        this.spId = build.spId;
 
+    }
+
+    public String getSpId() {
+        return spId;
     }
 
     public String getSpName() {
@@ -32,6 +38,7 @@ public class SoundPerson {
         private String spName;
         private String spNumber;
         private double spRate;
+        private String spId;
 
         public Builder spName(String value)
         {
@@ -48,6 +55,11 @@ public class SoundPerson {
             this.spRate = value;
             return this;
 
+        }
+        public Builder spId(String value)
+        {
+            this.spId = value;
+            return this;
         }
         public SoundPerson build()
         {

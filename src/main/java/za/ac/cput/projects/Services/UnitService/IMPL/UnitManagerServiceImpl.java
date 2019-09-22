@@ -33,13 +33,13 @@ public class UnitManagerServiceImpl implements UnitManagerService {
     }
 
     @Override
-    public void delete(String s) {
-        unitManRepository.delete(s);
+    public void delete(String unMId) {
+        unitManRepository.delete(unMId);
 
     }
 
     @Override
-    public UnitManager read(String s) {
-        return unitManRepository.read(s);
+    public UnitManager read(String unMId) {
+        return unitManRepository.read(unMId);
     }
 }

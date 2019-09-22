@@ -14,7 +14,13 @@ public class GafferImp implements GafferRepository {
         if(gafferImp == null) gafferImp = new GafferImp();
         return gafferImp;
     }
-
+   private Gaffer findGaffer(String gafId)
+   {
+       return this.gafferSet.stream()
+               .filter(gaffer -> gaffer.getGafId().trim().equals(gafId))
+               .findAny()
+               .orElse(null);
+   }
     @Override
     public Set<Gaffer> getAll() {
         return gafferSet;
@@ -27,40 +33,29 @@ public class GafferImp implements GafferRepository {
     }
 
     @Override
-    public void delete(String s) {
-        gafferSet.removeIf(t->t.getGafName().equals(s));
+    public void delete(String gafId) {
+       Gaffer toDelete = findGaffer(gafId);
+       if(toDelete!=null){
+           this.gafferSet.remove(toDelete);
+       }
 
 
     }
 
     @Override
     public Gaffer update(Gaffer gaffer) {
-        if(gafferSet.contains(gaffer))
-        {
-            for(Gaffer gaffer1:gafferSet)
-            {
-                if(gaffer1.equals(gaffer))
-                {
-                    return gaffer1;
-                }
-            }
-        }
-        return null;
+       Gaffer toUpdate = findGaffer(gaffer.getGafId());
+       if(toUpdate!=null){
+           this.gafferSet.remove(toUpdate);
+           return create(gaffer);
+       }
+       return null;
     }
 
     @Override
-    public Gaffer read(String s) {
+    public Gaffer read(String gafId) {
 
-        if(gafferImp.gafferSet.contains(s))
-        {
-            for(Gaffer gaffer1:gafferSet)
-            {
-                if(gaffer1.equals(s))
-                {
-                    return gaffer1;
-                }
-            }
-        }
-        return null;
+       Gaffer gaffer = findGaffer(gafId);
+       return gaffer;
     }
 }

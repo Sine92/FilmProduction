@@ -30,13 +30,13 @@ public class MakeUpServiceImpl implements MakeUpService {
     }
 
     @Override
-    public void delete(String s) {
-        makeUpArt.delete(s);
+    public void delete(String makeUAId) {
+        makeUpArt.delete(makeUAId);
 
     }
 
     @Override
-    public MakeUpAssist read(String s) {
-        return makeUpArt.read(s);
+    public MakeUpAssist read(String makeUAId) {
+        return makeUpArt.read(makeUAId);
     }
 }

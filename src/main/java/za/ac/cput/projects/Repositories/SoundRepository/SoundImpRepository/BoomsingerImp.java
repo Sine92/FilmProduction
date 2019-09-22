@@ -14,6 +14,13 @@ public class BoomsingerImp implements BoomSwingerRepository {
         if(boomsingerImp== null) boomsingerImp = new BoomsingerImp();
         return boomsingerImp;
     }
+    private BoomSwinger findBoomSwinger(String bsId)
+    {
+        return this.boomSwingerSet.stream()
+                .filter(boomSwinger -> boomSwinger.getBsId().trim().equals(bsId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<BoomSwinger> getAll() {
@@ -22,43 +29,32 @@ public class BoomsingerImp implements BoomSwingerRepository {
 
     @Override
     public BoomSwinger create(BoomSwinger boomSwinger) {
-        this.boomSwingerSet.add(boomSwinger);
-        return boomSwinger;
+      this.boomSwingerSet.add(boomSwinger);
+      return boomSwinger;
     }
 
     @Override
-    public void delete(String s) {
-        boomSwingerSet.removeIf(t->t.getBsName().equals(s));
+    public void delete(String bsId) {
+       BoomSwinger toDelete = findBoomSwinger(bsId);
+       if(toDelete!=null){
+           this.boomSwingerSet.remove(toDelete);
+       }
 
     }
 
     @Override
     public BoomSwinger update(BoomSwinger boomSwinger) {
-        if(boomSwingerSet.contains(boomSwinger))
-        {
-            for(BoomSwinger boomSwinger1: boomSwingerSet)
-            {
-                if(boomSwinger1.equals(boomSwinger))
-                {
-                    return boomSwinger1;
-                }
-            }
-        }
-        return null;
+     BoomSwinger toUpdate = findBoomSwinger(boomSwinger.getBsId());
+     if(toUpdate!=null){
+         this.boomSwingerSet.remove(toUpdate);
+         return create(boomSwinger);
+     }
+     return null;
     }
 
     @Override
-    public BoomSwinger read(String s) {
-        if(boomsingerImp.boomSwingerSet.contains(s))
-        {
-            for(BoomSwinger boomSwinger1: boomSwingerSet)
-            {
-                if(boomSwinger1.equals(s))
-                {
-                    return boomSwinger1;
-                }
-            }
-        }
-        return null;
+    public BoomSwinger read(String bsId) {
+      BoomSwinger boomSwinger = findBoomSwinger(bsId);
+      return boomSwinger;
     }
 }

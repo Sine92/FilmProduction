@@ -30,13 +30,13 @@ public class BoomSwingerServiceImpl implements BoomSwingerService {
     }
 
     @Override
-    public void delete(String s) {
-        boomsingerImp.delete(s);
+    public void delete(String bsId) {
+        boomsingerImp.delete(bsId);
 
     }
 
     @Override
-    public BoomSwinger read(String s) {
-        return boomsingerImp.read(s);
+    public BoomSwinger read(String bsId) {
+        return boomsingerImp.read(bsId);
     }
 }

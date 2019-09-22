@@ -30,13 +30,13 @@ public class BestBoyServiceImpl implements BestBoyService {
     }
 
     @Override
-    public void delete(String s) {
-        bestBoyImp.delete(s);
+    public void delete(String bbId) {
+        bestBoyImp.delete(bbId);
 
     }
 
     @Override
-    public BestBoy read(String s) {
-        return bestBoyImp.read(s);
+    public BestBoy read(String bbId) {
+        return bestBoyImp.read(bbId);
     }
 }

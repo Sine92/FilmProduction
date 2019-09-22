@@ -30,13 +30,13 @@ public class KeyGripServiceImpl implements KeyGripService {
     }
 
     @Override
-    public void delete(String s) {
-        keyGripRepo.delete(s);
+    public void delete(String kdId) {
+        keyGripRepo.delete(kdId);
 
     }
 
     @Override
-    public KeyGrip read(String s) {
-        return keyGripRepo.read(s);
+    public KeyGrip read(String kdId) {
+        return keyGripRepo.read(kdId);
     }
 }

@@ -21,6 +21,14 @@ public class CaterRepoImp implements CaterRepository {
         return caterRepoImp;
     }
 
+    private CaterTeamLeader findCaterTeam(String ctId)
+    {
+        return this.caterTeamLeaderSet.stream()
+                .filter(caterTeamLeader -> caterTeamLeader.getCtTId().trim().equals(ctId))
+                .findAny()
+                .orElse(null);
+    }
+
 
     @Override
     public Set<CaterTeamLeader> getAll() {
@@ -34,39 +42,26 @@ public class CaterRepoImp implements CaterRepository {
     }
 
     @Override
-    public void delete(String s) {
-        caterTeamLeaderSet.removeIf(t->t.getCtTName().equals(s));
-
+    public void delete(String ctId) {
+        CaterTeamLeader toDelete = findCaterTeam(ctId);
+        if(toDelete!=null){
+            this.caterTeamLeaderSet.remove(toDelete);
+        }
 
     }
 
     @Override
     public CaterTeamLeader update(CaterTeamLeader caterTeamLeader) {
-        if(caterTeamLeaderSet.contains(caterTeamLeader))
-        {
-            for(CaterTeamLeader caterTeamLeader1: caterTeamLeaderSet)
-            {
-                if(caterTeamLeader1.equals(caterTeamLeader))
-                {
-                    return caterTeamLeader1;
-                }
-            }
+        CaterTeamLeader toUpdate = findCaterTeam(caterTeamLeader.getCtTId());
+        if(toUpdate!=null){
+            this.caterTeamLeaderSet.remove(toUpdate);
         }
-        return null;
+       return null;
     }
 
     @Override
-    public CaterTeamLeader read(String s) {
-        if(caterRepoImp.caterTeamLeaderSet.contains(s))
-        {
-            for(CaterTeamLeader caterTeamLeader1: caterTeamLeaderSet)
-            {
-                if(caterTeamLeader1.equals(s))
-                {
-                    return caterTeamLeader1;
-                }
-            }
-        }
-        return null;
+    public CaterTeamLeader read(String ctId) {
+       CaterTeamLeader caterTeamLeader = findCaterTeam(ctId);
+       return caterTeamLeader;
     }
 }

@@ -14,6 +14,13 @@ public class WadrobeImp implements WardropRepository {
         if(wadrobeImp == null) wadrobeImp = new WadrobeImp();
         return  wadrobeImp;
     }
+    private Wadrobe findWadrobe(String wadId)
+    {
+        return  this.wadrobeSet.stream()
+                .filter(wadrobe -> wadrobe.getWadId().trim().trim().equals(wadId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<Wadrobe> getAll() {
@@ -27,39 +34,28 @@ public class WadrobeImp implements WardropRepository {
     }
 
     @Override
-    public void delete(String s) {
-        wadrobeSet.removeIf(t->t.getWadName().equals(s));
+    public void delete(String wadId) {
+      Wadrobe toDelete = findWadrobe(wadId);
+      if(toDelete!=null){
+          this.wadrobeSet.remove(toDelete);
+      }
 
     }
 
     @Override
     public Wadrobe update(Wadrobe wadrobe) {
-        if(wadrobeSet.contains(wadrobe))
-        {
-            for(Wadrobe wadrobe1:wadrobeSet)
-            {
-                if(wadrobe1.equals(wadrobe))
-                {
-                    return wadrobe1;
-                }
-            }
-        }
-        return null;
+      Wadrobe toUpdate = findWadrobe(wadrobe.getWadId());
+      if(toUpdate!=null){
+          this.wadrobeSet.remove(toUpdate);
+          return create(wadrobe);
+      }
+      return null;
     }
 
     @Override
-    public Wadrobe read(String s) {
+    public Wadrobe read(String wadId) {
+       Wadrobe wadrobe = findWadrobe(wadId);
+       return wadrobe;
 
-        if(wadrobeImp.wadrobeSet.contains(s))
-        {
-            for (Wadrobe wadrobe1: wadrobeSet)
-            {
-                if(wadrobe1.equals(s))
-                {
-                    return wadrobe1;
-                }
-            }
-        }
-        return null;
     }
 }

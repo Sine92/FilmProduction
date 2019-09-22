@@ -30,13 +30,13 @@ public class SparkServiceImpl implements SparkService {
     }
 
     @Override
-    public void delete(String s) {
-        sparkImp.delete(s);
+    public void delete(String spId) {
+        sparkImp.delete(spId);
 
     }
 
     @Override
-    public Spark read(String s) {
-        return sparkImp.read(s);
+    public Spark read(String spId) {
+        return sparkImp.read(spId);
     }
 }

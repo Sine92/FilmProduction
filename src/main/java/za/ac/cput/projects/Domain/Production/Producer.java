@@ -5,6 +5,7 @@ public class Producer {
     private String prodName;
     private String prodNumber;
     private double prodRate;
+    private String prodId;
 
     public Producer()
     {
@@ -15,6 +16,11 @@ public class Producer {
       this.prodName = build.prodName;
       this.prodNumber = build.prodNumber;
       this.prodRate = build.prodRate;
+      this.prodId = build.prodId;
+    }
+
+    public String getProdId() {
+        return prodId;
     }
 
     public String getProdName() {
@@ -32,6 +38,7 @@ public class Producer {
         private String prodName;
         private String prodNumber;
         private double prodRate;
+        private String prodId;
 
         public Builder prodName(String value)
         {
@@ -47,6 +54,11 @@ public class Producer {
         {
             this.prodRate = value;
             return  this;
+        }
+        public Builder prodId(String value)
+        {
+            this.prodId = value;
+            return this;
         }
         public Producer build()
         {

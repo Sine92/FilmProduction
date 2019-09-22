@@ -30,13 +30,13 @@ public class TalentChapServiceImpl implements TalentChapService {
     }
 
     @Override
-    public void delete(String s) {
-        talentChapImp.delete(s);
+    public void delete(String talId) {
+        talentChapImp.delete(talId);
 
     }
 
     @Override
-    public TalentChaperone read(String s) {
-        return talentChapImp.read(s);
+    public TalentChaperone read(String talId) {
+        return talentChapImp.read(talId);
     }
 }

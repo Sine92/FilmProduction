@@ -17,9 +17,12 @@ public class CamAssistantImp implements CamAsRepository {
         return camRepo;
 
     }
-    private CamAssistant findCamAssistant()
+    private CamAssistant findCamAssistant(String camAssId)
     {
-
+         return this.camAssistantSet.stream()
+                 .filter(camAssistant -> camAssistant.getCamAssId().trim().equals(camAssId))
+                 .findAny()
+                 .orElse(null);
     }
 
 
@@ -36,7 +39,12 @@ public class CamAssistantImp implements CamAsRepository {
     }
 
     @Override
-    public void delete(String camNameId) {
+    public void delete(String camAssId) {
+
+        CamAssistant toDelete = findCamAssistant(camAssId);
+        if(toDelete != null){
+            this.camAssistantSet.remove(toDelete);
+        }
 
 
 
@@ -44,11 +52,19 @@ public class CamAssistantImp implements CamAsRepository {
 
     @Override
     public CamAssistant update(CamAssistant camAssistant) {
-
+        CamAssistant toUpdate = findCamAssistant(camAssistant.getCamAssId());
+        if(toUpdate!= null){
+            this.camAssistantSet.remove(toUpdate);
+            return create(camAssistant);
+        }
+       return  null;
     }
 
     @Override
-    public CamAssistant read(String camAssistant) {
+    public CamAssistant read(String camAssId) {
+
+        CamAssistant camAssistant = findCamAssistant(camAssId);
+        return camAssistant;
 
     }
 }

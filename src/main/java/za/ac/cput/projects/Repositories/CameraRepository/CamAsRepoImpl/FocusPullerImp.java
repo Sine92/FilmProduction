@@ -19,7 +19,12 @@ public class FocusPullerImp implements FocusPullerRepository {
         if(focPullRepo == null) focPullRepo = new FocusPullerImp();
         return focPullRepo;
     }
-
+    private FocusPuller findFocusPuller(String focusPullerId){
+        return this.focusPullerSet.stream()
+                .filter(focusPuller -> focusPuller.getFocusPullerId().trim().equals(focusPullerId))
+                .findAny()
+                .orElse(null);
+    }
     @Override
     public Set<FocusPuller> getAll() {
         return focusPullerSet;
@@ -33,39 +38,28 @@ public class FocusPullerImp implements FocusPullerRepository {
     }
 
     @Override
-    public void delete(String s) {
-        focusPullerSet.removeIf(t->t.getFocusPName().equals(s));
-
+    public void delete(String focusPullerId) {
+    FocusPuller toDelete = findFocusPuller(focusPullerId);
+    if(toDelete!=null){
+        this.focusPullerSet.remove(toDelete);
+    }
 
     }
 
     @Override
     public FocusPuller update(FocusPuller focusPuller) {
-        if(focusPullerSet.contains(focusPuller))
-        {
-            for(FocusPuller focusPuller1:focusPullerSet)
-            {
-                if(focusPuller1.equals(focusPuller))
-                {
-                    return focusPuller1;
-                }
-            }
+        FocusPuller toUpdate = findFocusPuller(focusPuller.getFocusPullerId());
+        if(toUpdate!=null){
+            this.focusPullerSet.remove(toUpdate);
+            return create(focusPuller);
         }
-        return null;
+return  null;
     }
 
     @Override
-    public FocusPuller read(String s) {
-        if(focPullRepo.focusPullerSet.contains(s))
-        {
-            for(FocusPuller focusPuller1:focusPullerSet)
-            {
-                if(focusPuller1.equals(s))
-                {
-                    return focusPuller1;
-                }
-            }
-        }
-        return null;
+    public FocusPuller read(String focusPullerId) {
+
+        FocusPuller focusPuller = findFocusPuller(focusPullerId);
+        return focusPuller;
     }
 }

@@ -4,6 +4,7 @@ public class ProductionAssist {
     private String paName;
     private String paNumber;
     private double paRate;
+    private String paId;
 
     public ProductionAssist()
     {
@@ -14,7 +15,12 @@ public class ProductionAssist {
      this.paName = build.paName;
      this.paNumber = build.paNumber;
      this.paRate = build.paRate;
+     this.paId = build.paId;
 
+    }
+
+    public String getPaId() {
+        return paId;
     }
 
     public String getPaName() {
@@ -32,6 +38,7 @@ public class ProductionAssist {
         private String paName;
         private String paNumber;
         private double paRate;
+        private String paId;
 
         public Builder paName(String value)
         {
@@ -46,6 +53,11 @@ public class ProductionAssist {
         public Builder paRate(double value)
         {
             this.paRate = value;
+            return this;
+        }
+        public Builder paId(String value)
+        {
+            this.paId = value;
             return this;
         }
         public ProductionAssist build()

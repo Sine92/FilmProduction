@@ -30,13 +30,13 @@ public class GafferServiceImpl implements GafferService {
     }
 
     @Override
-    public void delete(String s) {
-        gafferImp.delete(s);
+    public void delete(String gafId) {
+        gafferImp.delete(gafId);
 
     }
 
     @Override
-    public Gaffer read(String s) {
-        return gafferImp.read(s);
+    public Gaffer read(String gafId) {
+        return gafferImp.read(gafId);
     }
 }

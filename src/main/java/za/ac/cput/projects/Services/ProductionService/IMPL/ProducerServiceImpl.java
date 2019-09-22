@@ -30,13 +30,13 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
-    public void delete(String s) {
-        producerImp.delete(s);
+    public void delete(String prodId) {
+        producerImp.delete(prodId);
 
     }
 
     @Override
-    public Producer read(String s) {
-        return producerImp.read(s);
+    public Producer read(String prodId) {
+        return producerImp.read(prodId);
     }
 }

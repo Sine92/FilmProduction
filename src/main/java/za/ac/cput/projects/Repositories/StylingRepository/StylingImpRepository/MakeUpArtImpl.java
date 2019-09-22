@@ -14,6 +14,13 @@ public class MakeUpArtImpl implements MakeUPRepository {
         if(makeUpArt == null) makeUpArt = new MakeUpArtImpl();
         return makeUpArt;
     }
+    private MakeUpAssist findMakeAss(String makeUAId)
+    {
+        return this.makeUpAssistSet.stream()
+                .filter(makeUpAssist -> makeUpAssist.getMakeUAId().trim().equals(makeUAId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<MakeUpAssist> getAll() {
@@ -28,40 +35,26 @@ public class MakeUpArtImpl implements MakeUPRepository {
     }
 
     @Override
-    public void delete(String s) {
-
-        makeUpAssistSet.removeIf(t->t.getMakeUAName().equals(s));
+    public void delete(String makeUAId) {
+        MakeUpAssist toDelete = findMakeAss(makeUAId);
+        if(toDelete!=null){
+            this.makeUpAssistSet.remove(toDelete);
+        }
 
     }
 
     @Override
     public MakeUpAssist update(MakeUpAssist makeUpAssist) {
-        if(makeUpAssistSet.contains(makeUpAssist))
-        {
-            for(MakeUpAssist makeUpAssist1: makeUpAssistSet)
-            {
-                if(makeUpAssist1.equals(makeUpAssist))
-                {
-                    return makeUpAssist1;
-                }
-            }
-        }
-        return null;
+      MakeUpAssist toUpdate = findMakeAss(makeUpAssist.getMakeUAId());
+      if(toUpdate!=null){
+          this.makeUpAssistSet.remove(toUpdate);
+          return create(makeUpAssist);
+      }
+      return null;
     }
-
     @Override
-    public MakeUpAssist read(String s) {
-
-        if(makeUpArt.makeUpAssistSet.contains(s))
-        {
-            for(MakeUpAssist makeUpAssist1: makeUpAssistSet)
-            {
-                if(makeUpAssist1.equals(s))
-                {
-                    return makeUpAssist1;
-                }
-            }
-        }
-        return null;
+    public MakeUpAssist read(String makeUAId) {
+      MakeUpAssist makeUpAssist = findMakeAss(makeUAId);
+      return makeUpAssist;
     }
 }

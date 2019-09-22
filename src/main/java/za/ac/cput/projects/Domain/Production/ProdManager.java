@@ -5,6 +5,7 @@ public class ProdManager {
     private String prManName;
     private String prManNumber;
     private double prManRate;
+    private String prId;
 
     public ProdManager()
     {
@@ -15,7 +16,12 @@ public class ProdManager {
         this.prManName=build.prManName;
         this.prManNumber = build.prManNumber;
         this.prManRate = build.prManRate;
+        this.prId = build.prId;
 
+    }
+
+    public String getPrId() {
+        return prId;
     }
 
     public String getPrManName() {
@@ -34,6 +40,7 @@ public class ProdManager {
         private String prManName;
         private String prManNumber;
         private double prManRate;
+        private String prId;
 
         public Builder prManName(String value)
         {
@@ -49,6 +56,11 @@ public class ProdManager {
         {
             this.prManRate = value;
             return  this;
+        }
+        public Builder prId(String value)
+        {
+            this.prId = value;
+            return this;
         }
         public ProdManager build()
         {

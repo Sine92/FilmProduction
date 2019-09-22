@@ -22,10 +22,10 @@ public class ArtRepoImpl implements ArtDirectorRepository {
         return artRepo;
     }
 
-    private ArtDirector findArtDirector(String artName)
+    private ArtDirector findArtDirector(String artId)
     {
         return this.artDirectorSet.stream()
-                .filter(artDirector -> artDirector.getArtDirectorName().trim().equals(artName))
+                .filter(artDirector -> artDirector.getArtDirectorName().trim().equals(artId))
                 .findAny()
                 .orElse(null);
     }
@@ -34,10 +34,10 @@ public class ArtRepoImpl implements ArtDirectorRepository {
         this.artDirectorSet.add(artDirector);
         return artDirector;
     }
-    public ArtDirector read(String artDName)
+    public ArtDirector read(String artId)
     {
 
-     ArtDirector artDirector = findArtDirector(artDName);
+     ArtDirector artDirector = findArtDirector(artId);
         return artDirector;
     }
 
@@ -52,16 +52,21 @@ return  null;
     }
 
     @Override
-    public void delete(String artDName) {
+    public void delete(String artId) {
 
-        ArtDirector toDelete = findArtDirector(artDName);
+        ArtDirector toDelete = findArtDirector(artId);
         if(toDelete!=null){
             this.artDirectorSet.remove(toDelete);
         }
 
     }
 
-
+    @Override
+    public ArtDirector displayBy(String artDRole)
+    {
+       return this.artDirectorSet.stream()
+               .filter(artDirector -> artDirector.)
+    }
 
     public Set<ArtDirector> getAll()
     {

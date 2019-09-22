@@ -19,6 +19,13 @@ public class MedicImp implements MedicRepository {
         if(medicImp == null) medicImp = new MedicImp();
         return  medicImp;
     }
+    private Medic findMedic(String medId)
+    {
+        return this.medicSet.stream()
+                .filter(medic -> medic.getMedId().trim().equals(medId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<Medic> getAll() {
@@ -32,42 +39,29 @@ public class MedicImp implements MedicRepository {
     }
 
     @Override
-    public void delete(String s) {
+    public void delete(String medId) {
 
-        medicSet.removeIf(t->t.getMedName().equals(s));
+     Medic toDelete = findMedic(medId);
+     if(toDelete!=null){
+         this.medicSet.remove(medId);
+     }
 
 
     }
 
     @Override
     public Medic update(Medic medic) {
-        if(medicSet.contains(medic))
-        {
-            for(Medic medic1: medicSet)
-            {
-                if(medic1.equals(medic))
-                {
-                    return medic1;
-                }
-            }
+        Medic toUpdate = findMedic(medic.getMedId());
+        if(toUpdate!=null){
+            this.medicSet.remove(toUpdate);
+            return  create(medic);
         }
-
         return null;
     }
 
     @Override
-    public Medic read(String s) {
-        if(medicImp.medicSet.contains(s))
-        {
-            for(Medic medic1: medicSet)
-            {
-                if(medic1.equals(s))
-                {
-                    return medic1;
-                }
-            }
-        }
-
-        return null;
+    public Medic read(String medId) {
+       Medic medic = findMedic(medId);
+       return medic;
     }
 }

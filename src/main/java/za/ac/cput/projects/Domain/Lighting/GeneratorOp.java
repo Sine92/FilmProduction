@@ -38,6 +38,11 @@ public class GeneratorOp {
         private double genRate;
         private String genId;
 
+        public Builder genId(String value)
+        {
+            this.genId = value;
+            return this;
+        }
         public Builder genName(String value)
         {
             this.genName = value;

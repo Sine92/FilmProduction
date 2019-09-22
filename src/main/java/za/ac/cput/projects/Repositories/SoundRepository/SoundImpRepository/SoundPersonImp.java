@@ -14,6 +14,13 @@ public class SoundPersonImp implements SoundPersonRepository {
         if(soundPersonImp == null) soundPersonImp = new SoundPersonImp();
         return soundPersonImp;
     }
+    private SoundPerson findSoundPerson(String spId)
+    {
+        return this.soundPersonSet.stream()
+                .filter(soundPerson -> soundPerson.getSpId().trim().equals(spId))
+                .findAny()
+                .orElse(null);
+    }
 
     @Override
     public Set<SoundPerson> getAll() {
@@ -28,38 +35,28 @@ public class SoundPersonImp implements SoundPersonRepository {
     }
 
     @Override
-    public void delete(String s) {
-        soundPersonSet.removeIf(t->t.getSpName().equals(s));
+    public void delete(String spId) {
+     SoundPerson toDelete = findSoundPerson(spId);
+     if(toDelete!=null){
+         this.soundPersonSet.remove(toDelete);
+     }
 
     }
 
     @Override
     public SoundPerson update(SoundPerson soundPerson) {
-        if(soundPersonSet.contains(soundPerson))
-        {
-            for(SoundPerson soundPerson1: soundPersonSet)
-            {
-                if(soundPerson1.equals(soundPerson))
-                {
-                    return soundPerson1;
-                }
-            }
-        }
-        return null;
+       SoundPerson toUpdate = findSoundPerson(soundPerson.getSpId());
+       if(toUpdate!=null){
+           this.soundPersonSet.remove(toUpdate);
+           return create(soundPerson);
+       }
+       return null;
     }
 
     @Override
-    public SoundPerson read(String s) {
-        if(soundPersonImp.soundPersonSet.contains(s))
-        {
-            for(SoundPerson soundPerson1:soundPersonSet)
-            {
-                if(soundPerson1.equals(s))
-                {
-                    return soundPerson1;
-                }
-            }
-        }
-        return null;
+    public SoundPerson read(String spId) {
+        SoundPerson soundPerson = findSoundPerson(spId);
+        return soundPerson;
+
     }
 }

@@ -14,7 +14,13 @@ public class FirstADImp implements FirtADRepo {
         if(firstADImp == null)firstADImp = new FirstADImp();
         return  firstADImp;
     }
-
+    private FirstAD findFirstAd(String faId)
+    {
+        return this.firstADSet.stream()
+                .filter(firstAD -> firstAD.getFaId().trim().equals(faId))
+                .findAny()
+                .orElse(null);
+    }
     @Override
     public Set<FirstAD> getAll() {
         return firstADSet;
@@ -27,39 +33,26 @@ public class FirstADImp implements FirtADRepo {
     }
 
     @Override
-    public void delete(String s) {
-        firstADSet.removeIf(t->t.getfAdName().equals(s));
+    public void delete(String faId) {
+        FirstAD toDelete = findFirstAd(faId);
+        if(toDelete!=null){
+            this.firstADSet.remove(toDelete);
+        }
 
     }
 
     @Override
     public FirstAD update(FirstAD firstAD) {
-        if(firstADSet.contains(firstAD))
-        {
-            for(FirstAD firstAD1:firstADSet)
-            {
-                if(firstAD1.equals(firstAD))
-                {
-                    return firstAD1;
-                }
-            }
+        FirstAD toUpdate = findFirstAd(firstAD.getFaId());
+        if(toUpdate!=null){
+            this.firstADSet.remove(firstAD.getFaId());
         }
-        return null;
+        return firstAD;
     }
 
     @Override
-    public FirstAD read(String s) {
-
-        if(firstADImp.firstADSet.contains(s))
-        {
-            for(FirstAD firstAD1:firstADSet)
-            {
-                if(firstAD1.equals(s))
-                {
-                    return firstAD1;
-                }
-            }
-        }
-        return null;
+    public FirstAD read(String faId) {
+        FirstAD firstAD = findFirstAd(faId);
+        return firstAD;
     }
 }

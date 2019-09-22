@@ -5,6 +5,7 @@ public class Medic {
     private String medName;
     private String medNumber;
     private double medRate;
+    private  String medId;
 
     public Medic ()
     {
@@ -15,6 +16,11 @@ public class Medic {
        this.medName=build.medName;
        this.medNumber = build.medNumber;
        this.medRate = build.medRate;
+       this.medId = build.medId;
+    }
+
+    public String getMedId() {
+        return medId;
     }
 
     public String getMedName() {
@@ -33,6 +39,7 @@ public class Medic {
         private String medName;
         private String medNumber;
         private double medRate;
+        private  String medId;
 
         public Builder medName(String value)
         {
@@ -47,6 +54,11 @@ public class Medic {
         public Builder medRate(double value)
         {
             this.medRate = value;
+            return this;
+        }
+        public Builder medId(String value)
+        {
+            this.medId = value;
             return this;
         }
         public Medic build()
