@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class IndexController {
-    @GetMapping("/")
+    @GetMapping("/IN")
     @ResponseBody
 
     public String getHome()
     {
-        return "Film Production Application";
+        return "YOU ARE INSIDE";
     }
 
 

@@ -1,5 +1,6 @@
 package za.ac.cput.projects.Repositories.ArtRepository.ArtImplRepository;
 
+import za.ac.cput.projects.Domain.Art.PropMaster;
 import za.ac.cput.projects.Domain.Art.Props;
 import za.ac.cput.projects.Repositories.ArtRepository.PropRepository;
 
@@ -58,6 +59,14 @@ public class PropsImpl implements PropRepository {
             this.propsList.remove(toDelete);
         }
 
+    }
+    @Override
+    public Props displayBy(String ppRole)
+    {
+        return this.propsList.stream()
+                .filter(props -> props.getPpRole().equalsIgnoreCase(ppRole))
+                .findAny()
+                .orElse(null);
     }
     public Set<Props> getAllPr()
     {

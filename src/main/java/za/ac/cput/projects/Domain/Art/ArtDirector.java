@@ -4,8 +4,13 @@ package za.ac.cput.projects.Domain.Art;
 public class ArtDirector {
     private String artDirectorName ;
     private String artDirectorNumber;
-    private double artDirectorRate;
+
     private String artId;
+    private String artDRole;
+
+    public String getArtDRole() {
+        return artDRole;
+    }
 
     public ArtDirector()
     {
@@ -15,8 +20,9 @@ public class ArtDirector {
     {
         this.artDirectorName = build.artDirectorName;
         this.artDirectorNumber = build.artDirectorNumber;
-        this.artDirectorRate = build.artDirectorRate;
+
         this.artId = build.artId;
+        this.artDRole = build.artDRole;
 
     }
 
@@ -32,15 +38,19 @@ public class ArtDirector {
         return artDirectorNumber;
     }
 
-    public double getArtDirectorRate() {
-        return artDirectorRate;
-    }
+
     public static class Builder{
         private String artDirectorName;
         private String artDirectorNumber;
-        private double artDirectorRate ;
-        private String artId;
 
+        private String artId;
+        private String artDRole;
+
+        public Builder artDRole(String value)
+        {
+            this.artDRole = value;
+            return this;
+        }
         public Builder artDirectorName(String value)
         {
             this.artDirectorName = value;
@@ -52,11 +62,7 @@ public class ArtDirector {
             this.artDirectorNumber = value;
             return this;
         }
-        public Builder artDirectorRate(double value)
-        {
-            this.artDirectorRate = value;
-            return this;
-        }
+
         public Builder artId(String value)
         {
             this.artId = value;
@@ -66,7 +72,7 @@ public class ArtDirector {
         {
             this.artDirectorName = artDirector.artDirectorName;
             this.artDirectorNumber = artDirector.artDirectorNumber;
-            this.artDirectorRate = artDirector.artDirectorRate;
+
             this.artId = artDirector.artId;
             return this;
 

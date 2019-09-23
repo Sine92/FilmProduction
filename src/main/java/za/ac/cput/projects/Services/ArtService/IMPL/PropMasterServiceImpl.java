@@ -39,6 +39,10 @@ public class PropMasterServiceImpl implements PropMasterService {
         propMasterRepo.delete(propMasterId);
 
     }
+    @Override
+    public PropMaster displayBy(String pmRole){
+        return  this.propMasterRepo.displayBy(pmRole);
+    }
 
     @Override
     public PropMaster read(String propMasterId) {

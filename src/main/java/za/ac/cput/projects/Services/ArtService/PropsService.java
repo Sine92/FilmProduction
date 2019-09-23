@@ -7,6 +7,6 @@ import java.util.Set;
 
 public interface PropsService extends IService<Props,String> {
 
-
+    Props displayBy(String ppRole);
     Set<Props> getAll();
 }

@@ -3,6 +3,7 @@ package za.ac.cput.projects.Services.ArtService.IMPL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import za.ac.cput.projects.Domain.Art.PropMaster;
 import za.ac.cput.projects.Domain.Art.Props;
 import za.ac.cput.projects.Repositories.ArtRepository.ArtImplRepository.PropsImpl;
 import za.ac.cput.projects.Services.ArtService.PropsService;
@@ -39,6 +40,10 @@ public class PropsServiceImpl implements PropsService {
         return propsRepo.read(propId);
     }
 
+    @Override
+    public Props displayBy(String ppRole){
+        return  this.propsRepo.displayBy(ppRole);
+    }
     @Override
     public Set<Props> getAll() {
         return propsRepo.getAllPr();

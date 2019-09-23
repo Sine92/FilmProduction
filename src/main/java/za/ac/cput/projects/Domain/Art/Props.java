@@ -6,6 +6,7 @@ public class Props {
     private String propsNumber;
     private double propsRate;
     private String propId;
+    private String ppRole;
 
     public String getPropId() {
         return propId;
@@ -21,6 +22,11 @@ public class Props {
      this.propsNumber = build.propsNumber;
      this.propsRate = build.propsRate;
      this.propId = build.propId;
+        this.ppRole = build.ppRole;
+    }
+
+    public String getPpRole() {
+        return ppRole;
     }
 
     public String getPropsName() {
@@ -39,6 +45,7 @@ public class Props {
         private String propsNumber;
         private double propsRate;
         private String propId;
+        private String ppRole;
 
         public Builder propsName(String value)
         {
@@ -60,6 +67,12 @@ public class Props {
             this.propId = value;
             return this;
         }
+        public Builder ppRole(String value)
+        {
+            this.ppRole = value;
+            return this;
+        }
+
         public Props build()
         {
             return new Props(this);

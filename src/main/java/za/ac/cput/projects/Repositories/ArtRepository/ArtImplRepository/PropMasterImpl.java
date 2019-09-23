@@ -1,5 +1,6 @@
 package za.ac.cput.projects.Repositories.ArtRepository.ArtImplRepository;
 
+import za.ac.cput.projects.Domain.Art.ArtDirector;
 import za.ac.cput.projects.Domain.Art.PropMaster;
 import za.ac.cput.projects.Repositories.ArtRepository.PropMasterRepository;
 
@@ -60,6 +61,14 @@ public class PropMasterImpl implements PropMasterRepository {
       }
 
     }
+    @Override
+    public PropMaster displayBy(String pmRole)
+    {
+        return this.propMasterSet.stream()
+                .filter(propMaster -> propMaster.getPmRole().equalsIgnoreCase(pmRole))
+                .findAny().orElse(null);
+    }
+
     public Set<PropMaster> getAll()
     {
         return this.propMasterSet;

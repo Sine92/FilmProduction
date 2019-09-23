@@ -34,8 +34,8 @@ public class ArtDirectServiceImpl implements ArtDirectService {
         return service;
     }
     @Override
-    private ArtDirector displayBy(String ArtDRole){
-      return this.artRepo.
+    public ArtDirector displayBy(String artDRole){
+      return this.artRepo.displayBy(artDRole);
     }
 
     @Override

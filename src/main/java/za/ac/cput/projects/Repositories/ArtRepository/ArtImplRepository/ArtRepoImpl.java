@@ -65,7 +65,7 @@ return  null;
     public ArtDirector displayBy(String artDRole)
     {
        return this.artDirectorSet.stream()
-               .filter(artDirector -> artDirector.)
+               .filter(artDirector -> artDirector.getArtDRole().equalsIgnoreCase(artDRole)).findAny().orElse(null);
     }
 
     public Set<ArtDirector> getAll()

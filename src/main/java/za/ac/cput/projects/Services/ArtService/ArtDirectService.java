@@ -6,6 +6,6 @@ import za.ac.cput.projects.Services.IService;
 import java.util.Set;
 
 public interface ArtDirectService extends IService<ArtDirector, String> {
-
+    ArtDirector displayBy(String artDRole);
     Set<ArtDirector> getAll();
 }
